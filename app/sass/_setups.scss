@@ -1,0 +1,22 @@
+@font-face { 
+    font-family: 'Helvetica'; 
+    src: url('../fonts/helvetica/helvetica.woff') format('woff2'), 
+         url('../fonts/helvetica/helvetica.woff') format('woff'); 
+}
+
+@font-face { 
+    font-family: 'HelveticaNeue'; 
+    src: url('../fonts/helveticaNeue/helveticaneue.woff2') format('woff2'), 
+         url('../fonts/helveticaNeue/helveticaneue.woff') format('woff'); 
+}
+
+$gray: #A1BBCD;
+
+.main {
+    width: 1440px;
+    height: 1024px;
+    margin: 0 auto;
+    font-family: HelveticaNeue;
+    font-weight: 300;
+    padding: 85px 115px 94px 115px;
+}

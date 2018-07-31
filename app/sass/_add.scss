@@ -1,0 +1,38 @@
+.visual {
+    width: 460px;
+}
+
+.dialog {
+    &__heading {
+        font-family: Roboto;
+        font-style: 600;
+        font-size: 56px;
+    }
+}
+
+.form {
+
+    box-sizing: border-box;
+
+    &__heading {
+        font-size: 24px;
+        margin: 30px 35px 26px 35px;
+    }
+
+    &__text{
+        font-size: 16px;
+        color: $gray;
+        width: 144px;
+    }
+
+    &__input{
+        box-sizing: border-box;
+
+    
+        &:focus {
+            border-style: 1px solid #47A4F7;
+        }
+    }
+
+    &__checkbox{}
+}
