@@ -15,14 +15,19 @@
 
     <div class="main">
         <div class="visual">
-            <div class="visual__image"></div>
-            <div class="visual__switch"></div>
+            <div class="visual__image">
+                <img src="img/house_day.png" alt="">
+            </div>
+            <div class="visual__switch dayNight">
+                <input class="dayNight-checkbox" type="checkbox" id="switch" />
+                <label class="dayNight-label" for="switch">Day/Night Toggle</label>
+            </div>
         </div>
-        <div class="dialog">
+        <div class="dialog ">
             <h1 class="dialog__heading">ЖК от Винта</h1>
             <div class="dialog__buttons">
-                <button type="button" class="dialog__button button__plain">Добавить жителя</button>
-                <button type="button" class="dialog__button button__active">Фильтр</button>
+                <button type="button" class="dialog__button button__active">Добавить жителя</button>
+                <button type="button" class="dialog__button button__plain ">Фильтр</button>
             </div>
             <div class="dialog__add form">
                 <form>
@@ -35,8 +40,8 @@
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__button_slider button__plain button__active">Мужской</button>
-                                <button type="button" class="form__button_slider button__plain button__active">Женский</button>
+                                <button type="button" class="form__slider_button button__plain">Мужской</button>
+                                <button type="button" class="form__slider_button button__active">Женский</button>
                             </div>
                         </div>
                         <div class="form__floor form__block">
@@ -83,22 +88,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form__buttons">
+                    <div class="form__buttons form__buttons_add">
                         <button type="button" class="form__button form__button_small">Сбросить</button>
                         <button type="button" class="form__button form__button_big">Добавить</button>
                     </div>
                 </form>
             </div>
 
-            <div class="dialog__filter form">
+            <div class="dialog__filter form hidden">
                 <form>
                     <h3 class="form__heading">Фильтр</h3>
                     <div class="form__blocks">
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__button_slider button__plain button__active">Мужской</button>
-                                <button type="button" class="form__button_slider button__plain button__active">Женский</button>
+                                <button type="button" class="form__slider_button button__plain">Мужской</button>
+                                <button type="button" class="form__slider_button button__active">Женский</button>
                             </div>
                         </div> 
                         <div class="form__rooms form__block">
@@ -134,13 +139,13 @@
                             <input type="number" class="form__input">
                         </div>
                     </div>
-                    <div class="form__buttons">
+                    <div class="form__buttons form__buttons_filter">
                         <button type="button" class="form__button form__button_big">Фильтровать</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="popup form">
+        <div class="popup form hidden">
             <form>
                 <h3 class="popup__heading">Андрей Смирнов</h3>
                 <div class="popup__blocks">

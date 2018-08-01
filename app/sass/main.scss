@@ -15,16 +15,36 @@ $gray: #A1BBCD;
 .main {
     width: 1440px;
     height: 1024px;
-    margin: 0 auto;
+    margin: auto auto;
     font-family: HelveticaNeue;
     font-size: 16px;
     font-weight: 300;
-    padding: 85px 115px 94px 115px;
-    background-color: #A1BBCD;
+    padding: 85px 115px;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
 }
 
 h3 {
     margin: 0;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .hidden {
@@ -38,6 +58,18 @@ h3 {
     padding-left: 0;
     top: 33px;
 }
+
+.button {
+
+    &__plain {
+        background-color: transparent;
+    }
+
+    &__active {
+        background: linear-gradient(0deg, #4288FA, #48A8F6);
+        color: #FFF;
+    }
+}
     
 // @import '_setups.scss';
 // @import '_add.scss';
@@ -46,17 +78,138 @@ h3 {
 // @import '_switcher.scss';
 
 .visual {
-    width: 460px;
+    width: 469px;
+    margin-right: 108px;
+    padding-left: 2px;
+
+    &__image {
+        margin-bottom: 21px;
+    }
+
+    &__switch {
+        display: flex;
+        justify-content: center;
+        align-self: flex-start;
+    }
+
 }
 
+.dayNight {
 
+    &-checkbox {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+    
+    &-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 133px;
+        height: 51px;
+        background: #393A59;
+        background-image: url('../img/night.svg');
+        background-repeat: no-repeat;
+        background-position: 66px 4px;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+
+
+            &:after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            border-radius: 90px;
+            transition: 0.3s;
+        }
+    }
+    
+
+    
+    &-checkbox:checked + &-label {
+        background: #ABCADD;
+        background-image: url('../img/day.svg');
+        background-repeat: no-repeat;
+        background-position: 18px 4px;
+    }
+    
+    &-checkbox:checked + &-label:after {
+        left: calc(100% - 5px);
+        transform: translateX(-100%);
+    }
+    
+    &-label:active:after {
+        width: 123px;
+    }
+
+}
 
 .dialog {
+
+
     &__heading {
         font-family: Roboto;
-        font-style: 600;
         font-size: 56px;
+        margin: 30px 0 27px 0;
     }
+
+    &__buttons {
+        position: relative;
+        width: 426px;
+        height: 49px;
+        box-sizing: border-box;
+        border: solid 1px #E4EAEE;
+        border-radius: 100px;
+        outline: none;
+        margin-bottom: 38px;
+    }
+
+    &__button {
+        width: 212px;
+        border: none;
+        border-radius: 100px;
+        padding: 15px 25px;
+        float: left;
+    }
+
+    &__add {
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 19px solid transparent;
+            border-right: 19px solid transparent;
+            border-bottom: 23px solid #fff;
+            position: absolute;
+            top: -21px;
+            left: 85px;
+        }
+    }
+
+    &__filter {
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 19px solid transparent;
+            border-right: 19px solid transparent;
+            border-bottom: 23px solid #fff;
+            position: absolute;
+            top: -21px;
+            left: 300px;
+        }
+
+    }
+
 }
 
 .form {
@@ -65,6 +218,9 @@ h3 {
     box-sizing: border-box;
     border-radius: 5px;
     background-color: #fff;
+    -webkit-box-shadow: 0px 0px 44px 0px rgba(207,207,207,1);
+    -moz-box-shadow: 0px 0px 44px 0px rgba(207,207,207,1);
+    box-shadow: 0px 0px 44px 0px rgba(207,207,207,1);
 
     &__blocks {
         padding: 28px 35px 0 35px;
@@ -79,6 +235,25 @@ h3 {
         font-size: 24px;
         padding: 30px 35px 26px 35px;
         border-bottom: solid 1px #EAECF0;
+    }
+
+    &__slider {
+        width: 426px;
+        height: 50px;
+        box-sizing: border-box;
+        border: solid 1px #E4EAEE;
+        border-radius: 100px;
+        outline: none;
+        position: relative;
+
+        &_button {
+            width: 212px;
+            border: none;
+            border-radius: 100px;
+            padding: 15px 25px;
+            float: left;
+            
+        }
     }
 
     &__text{
@@ -132,16 +307,26 @@ h3 {
         }
 
         &:after {
+            content: '';
             width: 22px;
             height: 11px;
             background-image: url('img/arrow-down.svg');  
-            
+            color: #000
         }
 
     }
 
     &__people, &__rooms {
         position: relative;
+
+        &__before {
+            content: '';
+            width: 22px;
+            height: 11px;
+            background-image: url('../img/arrow-down.svg');
+            position: absolute;
+            z-index: 2;
+        }
     }
 
     &__radio{
@@ -210,7 +395,16 @@ h3 {
         padding: 25px 35px;
         border-top: solid 1px #EAECF0;
         display: flex;
-        justify-content: center;
+        
+
+        &_add {
+            justify-content: space-between;
+        }
+
+        &_filter {
+            justify-content: center;
+        }
+
     }
 
     &__button{
@@ -236,6 +430,11 @@ h3 {
 }
 
 .popup {
+
+    align-self: center;
+    position: absolute;
+    right: 100px;
+
     &__heading {
         padding: 30px 35px;
         font-size: 25px;
@@ -252,10 +451,12 @@ h3 {
 
     &__col1 {
         width: 181px;
+        margin-right: 50px;
     }
 
     &__col2 {
         width: 300px;
+        margin-right: 40px;
     }
 
     &__text {
