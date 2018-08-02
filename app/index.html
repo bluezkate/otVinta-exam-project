@@ -16,18 +16,18 @@
     <div class="main">
         <div class="visual">
             <div class="visual__image">
-                <img src="img/house_day.png" alt="">
+                <img id="houseImg" src="img/house_day.png" alt="">
             </div>
             <div class="visual__switch dayNight">
-                <input class="dayNight-checkbox" type="checkbox" id="switch" />
-                <label class="dayNight-label" for="switch">Day/Night Toggle</label>
+                <input class="dayNight-checkbox" type="checkbox" id="dayNightSwitch" />
+                <label class="dayNight-label" for="dayNightSwitch">Day/Night Toggle</label>
             </div>
         </div>
         <div class="dialog ">
             <h1 class="dialog__heading">ЖК от Винта</h1>
             <div class="dialog__buttons">
-                <button type="button" class="dialog__button button__active">Добавить жителя</button>
-                <button type="button" class="dialog__button button__plain ">Фильтр</button>
+                <button type="button" class="dialog__button button__active" id="addSwitch">Добавить жителя</button>
+                <button type="button" class="dialog__button button__plain" id="filterSwitch">Фильтр</button>
             </div>
             <div class="dialog__add form">
                 <form>
@@ -35,13 +35,13 @@
                     <div class="form__blocks">
                         <div class="form__name form__block">
                             <p class="form__text">Имя</p>
-                            <input class="form__input"type="text">
+                            <input class="form__input" type="text">
                         </div>
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__slider_button button__plain">Мужской</button>
-                                <button type="button" class="form__slider_button button__active">Женский</button>
+                                <button type="button" class="form__slider_button button__plain" id="mSwitchAdd">Мужской</button>
+                                <button type="button" class="form__slider_button button__active" id="wSwitchAdd">Женский</button>
                             </div>
                         </div>
                         <div class="form__floor form__block">
@@ -51,7 +51,7 @@
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
                             <div class="form__menu">
-                                <p class="form__menu-title">Выбрать</p>
+                                <p id="menuRoomsAdd" class="form__menu-title">Выбрать</p>
                                 <ul class="hidden">
                                     <li class="form__menu form__menu-item">1</li>
                                     <li class="form__menu form__menu-item">2</li>
@@ -79,8 +79,8 @@
                         <div class="form__people form__block">
                             <p class="form__text">Сколько человек проживает</p>
                             <div class="form__menu">
-                                <p class="form__menu-title form__menu">Выбрать</p> 
-                                <ul>
+                                <p id="menuPeopleAdd" class="form__menu-title form__menu">Выбрать</p> 
+                                <ul class="hidden">
                                     <li class="form__menu form__menu-item">1</li>
                                     <li class="form__menu form__menu-item">2</li>
                                     <li class="form__menu form__menu-item">3</li>
@@ -102,15 +102,15 @@
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__slider_button button__plain">Мужской</button>
-                                <button type="button" class="form__slider_button button__active">Женский</button>
+                                <button type="button" class="form__slider_button button__plain" id="mSwitchFilter">Мужской</button>
+                                <button type="button" class="form__slider_button button__active" id="wSwitchFilter">Женский</button>
                             </div>
                         </div> 
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
                             <div class="form__menu">
-                                <p class="form__menu-title form__menu">Выбрать</p> 
-                                <ul>
+                                <p id="menuRoomsFilter" class="form__menu-title form__menu menuRooms">Выбрать</p> 
+                                <ul class="hidden">
                                     <li class="form__menu form__menu-item">1</li>
                                     <li class="form__menu form__menu-item">2</li>
                                     <li class="form__menu form__menu-item">3</li>
@@ -177,6 +177,8 @@
             </form>
         </div>
     </div>
-    
+
+
+    <script src="js/switchersDropDown.js"></script>
 </body>
 </html>

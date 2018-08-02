@@ -12,10 +12,14 @@
 
 $gray: #A1BBCD;
 
+body {
+    height: 100%;
+}
+
 .main {
     width: 1440px;
-    height: 1024px;
-    margin: auto auto;
+    margin: auto;
+    align-self: center;
     font-family: HelveticaNeue;
     font-size: 16px;
     font-weight: 300;
@@ -36,6 +40,7 @@ h3 {
 button {
     outline: none;
     cursor: pointer;
+    box-sizing: border-box
 }
 
 input[type='number'] {
@@ -47,8 +52,14 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 .hidden {
     display: none;
+    transition: all 0.5s ease;
 }
 
 .visible {
@@ -68,6 +79,7 @@ input::-webkit-inner-spin-button {
     &__active {
         background: linear-gradient(0deg, #4288FA, #48A8F6);
         color: #FFF;
+        transition: all 0.5s;
     }
 }
     
@@ -107,10 +119,10 @@ input::-webkit-inner-spin-button {
         text-indent: -9999px;
         width: 133px;
         height: 51px;
-        background: #393A59;
-        background-image: url('../img/night.svg');
+        background: #ABCADD;
+        background-image: url('../img/day.svg');
         background-repeat: no-repeat;
-        background-position: 66px 4px;
+        background-position: 20px 4px;
         display: block;
         border-radius: 100px;
         position: relative;
@@ -120,7 +132,7 @@ input::-webkit-inner-spin-button {
             content: '';
             position: absolute;
             top: 5px;
-            left: 5px;
+            left: 86px;
             width: 42px;
             height: 42px;
             background: #fff;
@@ -129,24 +141,17 @@ input::-webkit-inner-spin-button {
         }
     }
     
-
-    
     &-checkbox:checked + &-label {
-        background: #ABCADD;
-        background-image: url('../img/day.svg');
+        background: #393A59;
+        background-image: url('../img/night.svg');
         background-repeat: no-repeat;
-        background-position: 18px 4px;
+        background-position: 67px 4px;
     }
     
     &-checkbox:checked + &-label:after {
-        left: calc(100% - 5px);
-        transform: translateX(-100%);
+        transform: translateX(-190%);
     }
     
-    &-label:active:after {
-        width: 123px;
-    }
-
 }
 
 .dialog {
@@ -238,8 +243,8 @@ input::-webkit-inner-spin-button {
     }
 
     &__slider {
-        width: 426px;
-        height: 50px;
+        width: 427px;
+        height: 49px;
         box-sizing: border-box;
         border: solid 1px #E4EAEE;
         border-radius: 100px;
@@ -259,8 +264,9 @@ input::-webkit-inner-spin-button {
     &__text{
         color: $gray;
         width: 139px;
-        margin: 0;
-        align-self: center;
+        margin-top: 15px;
+        margin-bottom: 0;
+        align-self: flex-start;
     }
 
     &__input{
@@ -282,7 +288,8 @@ input::-webkit-inner-spin-button {
         width: 426px;
         outline: none;
         cursor: pointer;
-
+        position: relative;
+        padding: 0;
 
         &-title {
             margin: 0;
@@ -290,43 +297,42 @@ input::-webkit-inner-spin-button {
             border: solid 1px #E4EAEE;
             border-radius: 100px;
             padding: 15px 25px;
-        }
 
-        &-item {
-            margin: 0;
-            border-bottom: solid 1px #E4EAEE;
-            background-color: #fff;
-            padding: 15px 25px;
-            display: none;
 
-            &:last-child {
-                border-bottom-left-radius: 100px;
-                border-bottom-right-radius: 100px;
+            &:after {
+                content: '';
+                width: 22px;
+                height: 11px;
+                background-image: url('../img/arrow-down.svg');  
+                background-repeat: no-repeat;
+                color: #000;
+                position: absolute;
+                right: 25px;
+                top: 21px;
             }
 
         }
 
-        &:after {
-            content: '';
-            width: 22px;
-            height: 11px;
-            background-image: url('img/arrow-down.svg');  
-            color: #000
+        &-item {
+            margin: 0;
+            border-bottom:  solid 1px #E4EAEE;
+            background-color: #fff;
+            padding: 15px 25px;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+                transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+
         }
 
-    }
+        
 
-    &__people, &__rooms {
-        position: relative;
-
-        &__before {
-            content: '';
-            width: 22px;
-            height: 11px;
-            background-image: url('../img/arrow-down.svg');
-            position: absolute;
-            z-index: 2;
-        }
     }
 
     &__radio{
