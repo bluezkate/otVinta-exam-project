@@ -52,14 +52,6 @@ ul {
     transition: all 0.5s ease;
 }
 
-.visible {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    padding-left: 0;
-    top: 33px;
-}
-
 .button {
 
     &__plain {
