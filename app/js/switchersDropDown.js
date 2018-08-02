@@ -2,8 +2,8 @@
 
 var addSwitch = document.getElementById('addSwitch'),
     filterSwitch = document.getElementById('filterSwitch'),
-    addWindow = document.querySelector('.dialog__add'),
-    filterWindow = document.querySelector('.dialog__filter'),
+    addWindow = document.querySelector('.main__add'),
+    filterWindow = document.querySelector('.main__filter'),
     mSwitchAdd = document.getElementById('mSwitchAdd'),
     wSwitchAdd = document.getElementById('wSwitchAdd'),
     mSwitchFilter = document.getElementById('mSwitchFilter'),
@@ -15,7 +15,7 @@ var addSwitch = document.getElementById('addSwitch'),
     houseImg = document.getElementById('houseImg');
 
 
-// Sliders event listeners
+// Event listeners
 addSwitch.addEventListener('click', switchWindowsAdd);
 filterSwitch.addEventListener('click', switchWindowsFilter);
 
@@ -25,6 +25,8 @@ mSwitchFilter.addEventListener('click', switchSexM2Filter);
 wSwitchFilter.addEventListener('click', switchSexW2Filter);
 dayNightSwitch.addEventListener('click', dayNightChanger);
 
+
+// CALLBACKS
 // DAY/NIGHT HOUSE CHANGER 
 function dayNightChanger() {
     if(dayNightSwitch.checked) {
@@ -35,7 +37,6 @@ function dayNightChanger() {
 }
 
 
-// CALLBACKS
 // WINDOW SLIDER
 function switchWindowsAdd () {
 

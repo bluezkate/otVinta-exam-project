@@ -1,0 +1,43 @@
+
+.popup {
+
+    align-self: center;
+    position: absolute;
+    right: 100px;
+
+    &__heading {
+        padding: 30px 35px;
+        font-size: 25px;
+        font-family: Helvetica;
+        border-bottom: solid 1px #EAECF0;
+    }
+
+    &__blocks {
+        display: flex;
+        justify-content: space-between;
+        padding: 29px 35px 44px 35px;
+        background-color: #FBFCFD;
+    }
+
+    &__col1 {
+        width: 181px;
+        margin-right: 50px;
+    }
+
+    &__col2 {
+        width: 300px;
+        margin-right: 40px;
+    }
+
+    &__text {
+        color: $gray;
+        width: 139px;
+        margin: 0;
+        align-self: center;
+    }
+
+    &__value {
+        font-size: 20px;
+        color: #333333;
+    }
+}

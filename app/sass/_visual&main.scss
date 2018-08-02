@@ -1,0 +1,126 @@
+.visual {
+    width: 469px;
+    margin-right: 108px;
+    padding-left: 2px;
+
+    &__image {
+        margin-bottom: 21px;
+    }
+
+    &__switch {
+        display: flex;
+        justify-content: center;
+        align-self: flex-start;
+    }
+
+}
+
+.dayNight {
+
+    &-checkbox {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+    
+    &-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 133px;
+        height: 51px;
+        background: #ABCADD;
+        background-image: url('../img/day.svg');
+        background-repeat: no-repeat;
+        background-position: 20px 4px;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+
+
+            &:after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 86px;
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            border-radius: 90px;
+            transition: 0.3s;
+        }
+    }
+    
+    &-checkbox:checked + &-label {
+        background: #393A59;
+        background-image: url('../img/night.svg');
+        background-repeat: no-repeat;
+        background-position: 67px 4px;
+    }
+    
+    &-checkbox:checked + &-label:after {
+        transform: translateX(-190%);
+    }
+    
+}
+
+.main {
+
+    &__heading {
+        font-family: Roboto;
+        font-size: 56px;
+        margin: 30px 0 27px 0;
+    }
+
+    &__buttons {
+        position: relative;
+        width: 426px;
+        height: 49px;
+        box-sizing: border-box;
+        border: solid 1px #E4EAEE;
+        border-radius: 100px;
+        outline: none;
+        margin-bottom: 38px;
+    }
+
+    &__button {
+        width: 212px;
+        border: none;
+        border-radius: 100px;
+        padding: 15px 25px;
+        float: left;
+    }
+
+    &__add {
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 19px solid transparent;
+            border-right: 19px solid transparent;
+            border-bottom: 23px solid #fff;
+            position: absolute;
+            top: -21px;
+            left: 85px;
+        }
+    }
+
+    &__filter {
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 19px solid transparent;
+            border-right: 19px solid transparent;
+            border-bottom: 23px solid #fff;
+            position: absolute;
+            top: -21px;
+            left: 300px;
+        }
+
+    }
+
+}
