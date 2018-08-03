@@ -1,21 +1,25 @@
 'use strict';
 
-var addSwitch = document.getElementById('addSwitch'),
+var houseImg = document.getElementById('houseImg'),
+    dayNightSwitch = document.getElementById('dayNightSwitch'),
+    addSwitch = document.getElementById('addSwitch'),
     filterSwitch = document.getElementById('filterSwitch'),
     addWindow = document.querySelector('.main__add'),
     filterWindow = document.querySelector('.main__filter'),
     mSwitchAdd = document.getElementById('mSwitchAdd'),
     wSwitchAdd = document.getElementById('wSwitchAdd'),
     mSwitchFilter = document.getElementById('mSwitchFilter'),
-    wSwitchFilter = document.getElementById('wSwitchFilter'),
-    menuRoomsAdd = document.getElementById('menuRoomsAdd'),
-    menuPeopleAdd = document.getElementById('menuPeopleAdd'),
-    menuRoomsFilter = document.getElementById('menuRoomsFilter'),
-    dayNightSwitch = document.getElementById('dayNightSwitch'),
-    houseImg = document.getElementById('houseImg');
+    wSwitchFilter = document.getElementById('wSwitchFilter');
+    // menuRoomsAdd = document.getElementById('menuRoomsAdd'),
+    // menuPeopleAdd = document.getElementById('menuPeopleAdd'),
+    // menuRoomsFilter = document.getElementById('menuRoomsFilter'),
+    
+    
 
 
 // Event listeners
+dayNightSwitch.addEventListener('click', dayNightChanger);
+
 addSwitch.addEventListener('click', switchWindowsAdd);
 filterSwitch.addEventListener('click', switchWindowsFilter);
 
@@ -23,7 +27,7 @@ mSwitchAdd.addEventListener('click', switchSexMAdd);
 wSwitchAdd.addEventListener('click', switchSexWAdd);
 mSwitchFilter.addEventListener('click', switchSexM2Filter);
 wSwitchFilter.addEventListener('click', switchSexW2Filter);
-dayNightSwitch.addEventListener('click', dayNightChanger);
+
 
 
 // CALLBACKS
@@ -121,14 +125,15 @@ function switchSexW2Filter () {
 }
 
 
-// DROPDOWN
-menuRoomsAdd.addEventListener('click', function () {
-    menuRoomsAdd.nextElementSibling.classList.toggle("hidden"); 
-})
+// // DROPDOWN
+// menuRoomsAdd.addEventListener('click', function () {
+//     menuRoomsAdd.nextElementSibling.classList.toggle("hidden"); 
+// })
 
-menuPeopleAdd.addEventListener('click', function () {
-    menuPeopleAdd.nextElementSibling.classList.toggle("hidden");
-});
-menuRoomsFilter.addEventListener('click', function () {
-    menuRoomsFilter.nextElementSibling.classList.toggle("hidden");    
-})
+// menuPeopleAdd.addEventListener('click', function () {
+//     menuPeopleAdd.nextElementSibling.classList.toggle("hidden");
+// });
+
+// menuRoomsFilter.addEventListener('click', function () {
+//     menuRoomsFilter.nextElementSibling.classList.toggle("hidden");    
+// })

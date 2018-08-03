@@ -25,12 +25,12 @@
         </div>
         <div class="main">
             <h1 class="main__heading">ЖК от Винта</h1>
-            <div class="main__buttons">
-                <button type="button" class="main__button button__active" id="addSwitch">Добавить жителя</button>
-                <button type="button" class="main__button button__plain" id="filterSwitch">Фильтр</button>
-            </div>
+            <ul class="main__buttons">
+                <li class="main__button button__active" id="addSwitch">Добавить жителя</li>
+                <li class="main__button button__plain" id="filterSwitch">Фильтр</li>
+            </ul>
             <div class="main__add form">
-                <form>
+                <form id="add">
                     <h3 class="form__heading">Добавить жителя</h3>
                     <div class="form__blocks">
                         <div class="form__name form__block">
@@ -40,8 +40,14 @@
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__slider_button button__plain" id="mSwitchAdd">Мужской</button>
-                                <button type="button" class="form__slider_button button__active" id="wSwitchAdd">Женский</button>
+                                <div class="form__slider_element">
+                                    <input type="radio" id="mRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Мужской">
+                                    <label for="mRadioAdd" class="form__slider_radio">Мужской</label>
+                                </div>
+                                <div class="form__slider_element">
+                                    <input type="radio" id="wRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Женский">
+                                    <label for="wRadioAdd" class="form__slider_radio">Женский</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form__floor form__block">
@@ -51,27 +57,29 @@
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
                             <div class="form__menu">
-                                <p id="menuRoomsAdd" class="form__menu-title">Выбрать</p>
-                                <ul class="hidden">
-                                    <li class="form__menu form__menu-item">1</li>
-                                    <li class="form__menu form__menu-item">2</li>
-                                    <li class="form__menu form__menu-item">3</li>
-                                </ul>
+                                <div class="form__menu-arrow"></div>
+                                <div class="form__menu-arrow"></div>
+                                <select class="form__menu-wrapper" name="menuRoomsAdd" id="menuRoomsAdd" form="add" required="required">
+                                    <option value="Выбрать" >Выбрать</option>
+                                    <option value="1" >1</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form__extra form__block">
                             <p class="form__text">Дополнительно</p>
                             <div class="form__radio">
                                 <label for="pets__add" class="form__radio-item ">
-                                    <input type="radio" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add">
+                                    <input type="checkbox" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add">
                                     <span class="form__radio-text">Домашние животные</span>
                                 </label>
                                 <label for="tv__add" class="form__radio-item">
-                                    <input type="radio" name="extra__add" value="ТВ" class="form__radio-input" id="tv__add">
+                                    <input type="checkbox" name="extra__add" value="ТВ" class="form__radio-input" id="tv__add">
                                     <span class="form__radio-text">ТВ</span>
                                 </label>
                                 <label for="internet__add" class="form__radio-item">
-                                    <input type="radio" name="extra__add" value="Интернет" class="form__radio-input" id="internet__add">
+                                    <input type="checkbox" name="extra__add" value="Интернет" class="form__radio-input" id="internet__add">
                                     <span class="form__radio-text">Интернет</span>
                                 </label>
                             </div>
@@ -79,17 +87,19 @@
                         <div class="form__people form__block">
                             <p class="form__text">Сколько человек проживает</p>
                             <div class="form__menu">
-                                <p id="menuPeopleAdd" class="form__menu-title form__menu">Выбрать</p> 
-                                <ul class="hidden">
-                                    <li class="form__menu form__menu-item">1</li>
-                                    <li class="form__menu form__menu-item">2</li>
-                                    <li class="form__menu form__menu-item">3</li>
-                                </ul>
+                                <div class="form__menu-arrow"></div>
+                                <div class="form__menu-arrow"></div>
+                                <select class="form__menu-wrapper" name="menuPeopleAdd" id="menuPeopleAdd" form="add" required="required">
+                                    <option value="Выбрать">Выбрать</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="form__buttons form__buttons_add">
-                        <button type="button" class="form__button form__button_small">Сбросить</button>
+                        <button type="reset" class="form__button form__button_small">Сбросить</button>
                         <button type="button" class="form__button form__button_big">Добавить</button>
                     </div>
                 </form>
@@ -102,34 +112,42 @@
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
-                                <button type="button" class="form__slider_button button__plain" id="mSwitchFilter">Мужской</button>
-                                <button type="button" class="form__slider_button button__active" id="wSwitchFilter">Женский</button>
+                                <div class="form__slider_element">
+                                    <input type="radio" id="mRadioFilter" class="form__slider_input" name="sexSliderFilter" value="Мужской">
+                                    <label for="mRadioFilter" class="form__slider_radio">Мужской</label>
+                                </div>
+                                <div class="form__slider_element">
+                                    <input type="radio" id="wRadioFilter" class="form__slider_input" name="sexSliderFilter" value="Женский">
+                                    <label for="wRadioFilter" class="form__slider_radio">Женский</label>
+                                </div>
                             </div>
                         </div> 
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
                             <div class="form__menu">
-                                <p id="menuRoomsFilter" class="form__menu-title form__menu menuRooms">Выбрать</p> 
-                                <ul class="hidden">
-                                    <li class="form__menu form__menu-item">1</li>
-                                    <li class="form__menu form__menu-item">2</li>
-                                    <li class="form__menu form__menu-item">3</li>
-                                </ul>
+                                <div class="form__menu-arrow"></div>
+                                <div class="form__menu-arrow"></div>
+                                <select class="form__menu-wrapper" name="menuRoomsAdd" id="menuRoomsAdd" form="add" required="required">
+                                    <option value="Выбрать" >Выбрать</option>
+                                    <option value="1" >1</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form__extra form__block">
                             <p class="form__text">Дополнительно</p>
                             <div class="form__radio">
                                 <label for="pets__filter" class="form__radio-item ">
-                                    <input type="radio" name="extra__filter" value="Домашние животные" class="form__radio-input" id="pets__filter">
+                                    <input type="checkbox" name="extra__filter" value="Домашние животные" class="form__radio-input" id="pets__filter">
                                     <span class="form__radio-text">Домашние животные</span>
                                 </label>
                                 <label for="tv__filter" class="form__radio-item">
-                                    <input type="radio" name="extra__filter" value="ТВ" class="form__radio-input" id="tv__filter">
+                                    <input type="checkbox" name="extra__filter" value="ТВ" class="form__radio-input" id="tv__filter">
                                     <span class="form__radio-text">ТВ</span>
                                 </label>
                                 <label for="internet__filter" class="form__radio-item">
-                                    <input type="radio" name="extra__filter" value="Интернет" class="form__radio-input" id="internet__filter">
+                                    <input type="checkbox" name="extra__filter" value="Интернет" class="form__radio-input" id="internet__filter">
                                     <span class="form__radio-text">Интернет</span>
                                 </label>
                             </div>

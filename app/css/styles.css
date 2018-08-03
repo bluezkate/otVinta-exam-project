@@ -139,7 +139,12 @@ ul {
   -webkit-border-radius: 100px;
           border-radius: 100px;
   outline: none;
-  margin-bottom: 38px; }
+  margin-bottom: 38px;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
 
 .main__button {
   width: 212px;
@@ -147,7 +152,10 @@ ul {
   -webkit-border-radius: 100px;
           border-radius: 100px;
   padding: 15px 25px;
-  float: left; }
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center; }
 
 .main__add {
   position: relative; }
@@ -205,14 +213,48 @@ ul {
     -webkit-border-radius: 100px;
             border-radius: 100px;
     outline: none;
-    position: relative; }
-    .form__slider_button {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .form__slider_element {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+    .form__slider_radio {
       width: 212px;
-      border: none;
       -webkit-border-radius: 100px;
               border-radius: 100px;
       padding: 15px 25px;
-      float: left; }
+      cursor: pointer;
+      text-align: center;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box; }
+    .form__slider_input {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
+      display: none;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none; }
+      .form__slider_input:checked + label {
+        background: -webkit-gradient(linear, left bottom, left top, from(#4288FA), to(#48A8F6));
+        background: -webkit-linear-gradient(bottom, #4288FA, #48A8F6);
+        background: -o-linear-gradient(bottom, #4288FA, #48A8F6);
+        background: linear-gradient(0deg, #4288FA, #48A8F6);
+        color: #FFF;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s; }
   .form__text {
     color: #A1BBCD;
     width: 139px;
@@ -233,48 +275,34 @@ ul {
     .form__input:focus {
       border: 1px solid #47A4F7; }
   .form__menu {
-    list-style-type: none;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    width: 426px;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    padding: 0; }
-    .form__menu-title {
-      margin: 0;
-      -webkit-align-self: center;
-          -ms-flex-item-align: center;
-              align-self: center;
+    position: relative; }
+    .form__menu :hover {
+      -webkit-box-shadow: 0px 0px 3px gray;
+              box-shadow: 0px 0px 3px gray; }
+    .form__menu-wrapper {
+      width: 426px;
+      height: 50px;
+      -webkit-border-radius: 30px;
+              border-radius: 30px;
       border: solid 1px #E4EAEE;
-      -webkit-border-radius: 100px;
-              border-radius: 100px;
-      padding: 15px 25px; }
-      .form__menu-title:after {
-        content: '';
-        width: 22px;
-        height: 11px;
-        background-image: url("../img/arrow-down.svg");
-        background-repeat: no-repeat;
-        color: #000;
-        position: absolute;
-        right: 25px;
-        top: 21px; }
-    .form__menu-item {
-      margin: 0;
-      border-bottom: solid 1px #E4EAEE;
-      background-color: #fff;
-      padding: 15px 25px; }
-      .form__menu-item:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-        -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
-        -o-transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
-        transition: all 0.2s cubic-bezier(0.4, 0, 1, 1); }
-      .form__menu-item:last-child {
-        -webkit-border-bottom-left-radius: 30px;
-                border-bottom-left-radius: 30px;
-        -webkit-border-bottom-right-radius: 30px;
-                border-bottom-right-radius: 30px; }
+      outline: none;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      cursor: pointer;
+      padding-left: 15px; }
+    .form__menu-arrow {
+      position: absolute;
+      border: 12px solid transparent;
+      right: 26px; }
+      .form__menu-arrow:nth-child(1) {
+        top: 21px;
+        border-top-color: #000; }
+      .form__menu-arrow:nth-child(2) {
+        top: 19px;
+        border-top-color: #FFF; }
   .form__radio {
     width: 426px;
     display: -webkit-box;
@@ -356,9 +384,7 @@ ul {
     -webkit-border-radius: 100px;
             border-radius: 100px;
     border: none;
-    outline: none;
-    padding: 14px 63px;
-    cursor: pointer; }
+    padding: 14px 63px; }
     .form__button_small {
       width: 209px;
       background-color: #EBEAEA; }

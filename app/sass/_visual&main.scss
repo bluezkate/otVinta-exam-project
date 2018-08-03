@@ -81,6 +81,8 @@
         border-radius: 100px;
         outline: none;
         margin-bottom: 38px;
+        list-style-type: none;
+        display: flex;
     }
 
     &__button {
@@ -88,7 +90,9 @@
         border: none;
         border-radius: 100px;
         padding: 15px 25px;
-        float: left;
+        cursor: pointer;
+        box-sizing: border-box;
+        text-align: center;
     }
 
     &__add {
