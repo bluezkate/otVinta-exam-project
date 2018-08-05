@@ -30,12 +30,12 @@
                 <li class="main__button button__plain" id="filterSwitch">Фильтр</li>
             </ul>
             <div class="main__add form">
-                <form id="add">
+                <form id="add" name="add">
                     <h3 class="form__heading">Добавить жителя</h3>
                     <div class="form__blocks">
                         <div class="form__name form__block">
                             <p class="form__text">Имя</p>
-                            <input class="form__input" type="text">
+                            <input class="form__input" type="text" id="personName">
                         </div>
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
@@ -45,25 +45,25 @@
                                     <label for="mRadioAdd" class="form__slider_radio">Мужской</label>
                                 </div>
                                 <div class="form__slider_element">
-                                    <input type="radio" id="wRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Женский">
+                                    <input type="radio" id="wRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Женский" checked>
                                     <label for="wRadioAdd" class="form__slider_radio">Женский</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form__floor form__block">
                             <p class="form__text">Этаж</p>
-                            <input class="form__input" type="number">
+                            <input class="form__input" type="number" id="personFloor">
                         </div>
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
                             <div class="form__menu">
                                 <div class="form__menu-arrow"></div>
                                 <div class="form__menu-arrow"></div>
-                                <select class="form__menu-wrapper" name="menuRoomsAdd" id="menuRoomsAdd" form="add" required="required">
-                                    <option value="Выбрать" >Выбрать</option>
-                                    <option value="1" >1</option>
-                                    <option value="2" >2</option>
-                                    <option value="3" >3</option>
+                                <select class="form__menu-wrapper" name="menuRoomsAdd" id="menuRoomsAdd"  required="required">
+                                    <option value="0">Выбрать</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <p class="form__text">Дополнительно</p>
                             <div class="form__radio">
                                 <label for="pets__add" class="form__radio-item ">
-                                    <input type="checkbox" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add">
+                                    <input type="checkbox" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add" checked>
                                     <span class="form__radio-text">Домашние животные</span>
                                 </label>
                                 <label for="tv__add" class="form__radio-item">
@@ -90,7 +90,7 @@
                                 <div class="form__menu-arrow"></div>
                                 <div class="form__menu-arrow"></div>
                                 <select class="form__menu-wrapper" name="menuPeopleAdd" id="menuPeopleAdd" form="add" required="required">
-                                    <option value="Выбрать">Выбрать</option>
+                                    <option value="0">Выбрать</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="form__buttons form__buttons_add">
                         <button type="reset" class="form__button form__button_small">Сбросить</button>
-                        <button type="button" class="form__button form__button_big">Добавить</button>
+                        <button type="submit" class="form__button form__button_big" id="formSubmit">Добавить</button>
                     </div>
                 </form>
             </div>
@@ -127,7 +127,7 @@
                             <div class="form__menu">
                                 <div class="form__menu-arrow"></div>
                                 <div class="form__menu-arrow"></div>
-                                <select class="form__menu-wrapper" name="menuRoomsAdd" id="menuRoomsAdd" form="add" required="required">
+                                <select class="form__menu-wrapper" name="menuRoomsFilter" id="menuRoomsFilter" form="filter" required="required">
                                     <option value="Выбрать" >Выбрать</option>
                                     <option value="1" >1</option>
                                     <option value="2" >2</option>
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <div class="form__buttons form__buttons_filter">
-                        <button type="button" class="form__button form__button_big">Фильтровать</button>
+                        <button type="submit" class="form__button form__button_big">Фильтровать</button>
                     </div>
                 </form>
             </div>
@@ -196,7 +196,8 @@
         </div>
     </div>
 
-
+    <script src="js/inputValidation.js"></script>
     <script src="js/switchersDropDown.js"></script>
+    <script src="js/savingToLS.js"></script>
 </body>
 </html>

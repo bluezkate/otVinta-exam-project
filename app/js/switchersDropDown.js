@@ -5,30 +5,12 @@ var houseImg = document.getElementById('houseImg'),
     addSwitch = document.getElementById('addSwitch'),
     filterSwitch = document.getElementById('filterSwitch'),
     addWindow = document.querySelector('.main__add'),
-    filterWindow = document.querySelector('.main__filter'),
-    mSwitchAdd = document.getElementById('mSwitchAdd'),
-    wSwitchAdd = document.getElementById('wSwitchAdd'),
-    mSwitchFilter = document.getElementById('mSwitchFilter'),
-    wSwitchFilter = document.getElementById('wSwitchFilter');
-    // menuRoomsAdd = document.getElementById('menuRoomsAdd'),
-    // menuPeopleAdd = document.getElementById('menuPeopleAdd'),
-    // menuRoomsFilter = document.getElementById('menuRoomsFilter'),
-    
-    
-
+    filterWindow = document.querySelector('.main__filter');
 
 // Event listeners
 dayNightSwitch.addEventListener('click', dayNightChanger);
-
 addSwitch.addEventListener('click', switchWindowsAdd);
 filterSwitch.addEventListener('click', switchWindowsFilter);
-
-mSwitchAdd.addEventListener('click', switchSexMAdd);
-wSwitchAdd.addEventListener('click', switchSexWAdd);
-mSwitchFilter.addEventListener('click', switchSexM2Filter);
-wSwitchFilter.addEventListener('click', switchSexW2Filter);
-
-
 
 // CALLBACKS
 // DAY/NIGHT HOUSE CHANGER 
@@ -69,71 +51,3 @@ function switchWindowsFilter () {
         filterWindow.classList.remove("hidden");
     } else return
 }
-
-
-
-// SEX SLIDER
-// add window
-function switchSexMAdd () {
-    if (mSwitchAdd.classList.contains("button__plain")) {
-
-        mSwitchAdd.classList.remove("button__plain");
-        mSwitchAdd.classList.add("button__active");
-
-        wSwitchAdd.classList.remove("button__active");
-        wSwitchAdd.classList.add("button__plain");
-
-    } else return
-}
-
-function switchSexWAdd () {
-    if (wSwitchAdd.classList.contains("button__plain")) {
-
-        mSwitchAdd.classList.remove("button__active");
-        mSwitchAdd.classList.add("button__plain");
-
-        wSwitchAdd.classList.remove("button__plain");
-        wSwitchAdd.classList.add("button__active");
-
-    } else return
-}
-
-
-// filter window
-function switchSexM2Filter () {
-    if (mSwitchFilter.classList.contains("button__plain")) {
-
-        mSwitchFilter.classList.remove("button__plain");
-        mSwitchFilter.classList.add("button__active");
-
-        wSwitchFilter.classList.remove("button__active");
-        wSwitchFilter.classList.add("button__plain");
-
-    } else return
-}
-
-function switchSexW2Filter () {
-    if (wSwitchFilter.classList.contains("button__plain")) {
-
-        mSwitchFilter.classList.remove("button__active");
-        mSwitchFilter.classList.add("button__plain");
-
-        wSwitchFilter.classList.remove("button__plain");
-        wSwitchFilter.classList.add("button__active");
-
-    } else return
-}
-
-
-// // DROPDOWN
-// menuRoomsAdd.addEventListener('click', function () {
-//     menuRoomsAdd.nextElementSibling.classList.toggle("hidden"); 
-// })
-
-// menuPeopleAdd.addEventListener('click', function () {
-//     menuPeopleAdd.nextElementSibling.classList.toggle("hidden");
-// });
-
-// menuRoomsFilter.addEventListener('click', function () {
-//     menuRoomsFilter.nextElementSibling.classList.toggle("hidden");    
-// })
