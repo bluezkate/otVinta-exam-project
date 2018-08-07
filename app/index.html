@@ -18,30 +18,11 @@
             <div class="visual__image house">
                 <img id="houseImg" src="img/house_day.png" alt="">
                 <div class="house__floors">
-                    <div id="5thFloor" class="house__floor">
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                    </div>
-                    <div id="4thFloor" class="house__floor">
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                    </div>
-                    <div id="3rdFloor" class="house__floor">
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                    </div>
-                    <div id="2ndFloor" class="house__floor"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                    <div id="1stFloor" class="house__floor">
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                        <div class="house__person"></div>
-                    </div>
+                    <ul id="5thFloor" class="house__floor"></ul>
+                    <ul id="4thFloor" class="house__floor"></ul>
+                    <ul id="3rdFloor" class="house__floor"></ul>
+                    <ul id="2ndFloor" class="house__floor"></ul>
+                    <ul id="1stFloor" class="house__floor"></ul>
                 </div>       
             </div>
             <div class="visual__switch dayNight">
@@ -61,7 +42,7 @@
                     <div class="form__blocks">
                         <div class="form__name form__block">
                             <p class="form__text">Имя</p>
-                            <input class="form__input" type="text" id="personName">
+                            <input class="form__input" type="text" id="personName" autocomplete="off">
                         </div>
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
@@ -78,7 +59,7 @@
                         </div>
                         <div class="form__floor form__block">
                             <p class="form__text">Этаж</p>
-                            <input class="form__input" type="text" id="personFloor">
+                            <input class="form__input" type="text" id="personFloor" autocomplete="off" pattern="[0-9]{1}">
                         </div>
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>

@@ -5,19 +5,23 @@ const personName = document.getElementById('personName'),
     roomsSelected = document.getElementById("menuRoomsAdd"),
     personLivingWithSelected = document.getElementById("menuPeopleAdd"),
     formSubmit = document.getElementById('add'),
+    firstFloor = document.getElementById('1stFloor'),
+    secondFloor = document.getElementById('2ndFloor'),
+    thirdFloor = document.getElementById('3rdFloor'),
+    fourthFloor = document.getElementById('4thFloor'),
+    fifthFloor = document.getElementById('5thFloor'),
     regArray= ['0','6', '7', '8', '9'];
+
+let firstFloorArray = [],
+    secondFloorArray = [],
+    thirdFloorArray = [],
+    fourthFloorArray = [],
+    fifthFloorArray = [];
 
 
 // Event Listeners
 formSubmit.addEventListener('submit', submitLodgerToLS);
 personFloor.addEventListener('keyup', checkFloorInput);
-
-function checkFloorInput () {
-    var regExp = new RegExp("[" + regArray + "]");
-    if(regExp.test(this.value)) {
-        alert('Введите номер этажа от 1 до 5');
-    } else return
-}
 
 // Adding person info to LS
 function submitLodgerToLS(e) {
@@ -40,8 +44,6 @@ function submitLodgerToLS(e) {
         roommates: personLivingWithSelected.options[personLivingWithSelected.selectedIndex].value
     }
 
-    console.log(person);
-
     // Checking if all the data has been entered
     checkIfEmpty(person);
 
@@ -51,7 +53,7 @@ function submitLodgerToLS(e) {
     e.preventDefault();
 }
 
-// Checking if all the data has been entered
+// Checking if all the data had been entered
 function checkIfEmpty(person) {
     if (person.name === '' ||
     person.sex.value === null ||
@@ -65,7 +67,6 @@ function checkIfEmpty(person) {
 
 // Store person object in LS
 var counter = 0;
-
 function storeLodgerInLS(person) {
 
     let lodgersAll;
@@ -89,129 +90,154 @@ function storeLodgerInLS(person) {
         } else return
     }
 
-    addLodgerToDOM();
+    addLodgerToDOM(person);
 
     removeEventSubmit();
 
 }
 
+
+
+// Add person to DOM
+// function addPersonToDOM(person) {
+
+//     let firstFloorArray = [],
+//         secondFloorArray = [],
+//         thirdFloorArray = [],
+//         fourthFloorArray = [],
+//         fifthFloorArray = [];
+
+//     if (person.floor === 1) {
+//         firstFloorArray.push(person);
+//     } else if (person.floor === 2) {
+//         secondFloorArray.push(person);
+//     } else if (person.floor === 3) {
+//         thirdFloorArray.push(person);
+//     } else if (person.floor === 4) {
+//         fourthFloorArray.push(person);
+//     } else if (person.floor === 5) {
+//         fifthFloorArray.push(person);
+//     }
+
+// }
+
+
 // Add person object to DOM
-function addLodgerToDOM() {
+function addLodgerToDOM(person) {
 
-    let lodgersAll = JSON.parse(localStorage.getItem('lodgersAll')),
-        firstFloorArray = [],
-        secondFloorArray = [],
-        thirdFloorArray = [],
-        fourthFloorArray = [],
-        fifthFloorArray = [];
-
-    const personFloorValue = personFloor.value,
-            personFloorValueUp = +personFloorValue + 1;
-
-    firstFloorArray = lodgersAll.filter(function(item) {
-        return item.floor === "1";
-
-    });
-
-    secondFloorArray = lodgersAll.filter(function(item) {
-        return item.floor === "2";
-    });
-
-    thirdFloorArray = lodgersAll.filter(function(item) {
-        return item.floor === "3";
-    });
-
-    fourthFloorArray = lodgersAll.filter(function(item) {
-        return item.floor === "4";
-    });
-
-    fifthFloorArray = lodgersAll.filter(function(item) {
-        return item.floor === "5";
-    });
-
-    // checkFloorArrays(firstFloorArray);
-    // checkFloorArrays(secondFloorArray);
-    // checkFloorArrays(thirdFloorArray);
-    // checkFloorArrays(fourthFloorArray);
-    // checkFloorArrays(fifthFloorArray);
-
-    // checkFloorArrays();
-
-    if (firstFloorArray.length > 2) {
-
+    if (person.floor === "1") {
+        firstFloorArray.push(person);
+    } else if (person.floor === "2") {
+        secondFloorArray.push(person);
+    } else if (person.floor === "3") {
+        thirdFloorArray.push(person);
+    } else if (person.floor === "4") {
+        fourthFloorArray.push(person);
+    } else if (person.floor === "5") {
+        fifthFloorArray.push(person);
     }
 
-    // function checkFloorArrays() {
-
-    //     if (firstFloorArray.length > 2 || 
-    //         secondFloorArray.length > 2 ||
-    //         thirdFloorArray.length > 2 ||
-    //         fourthFloorArray.length > 2) {
-    //         personFloor.setAttribute('pattern', `[${personFloorValueUp}-5]{1}`);
-    //         personFloor.setAttribute('title', `Весь ${personFloorValue}-й этаж занят!`);
-    //     } else if (fifthFloorArray.length > 2) {
-    //         personFloor.setAttribute('pattern', `[1 - ${+personFloorValue}]{1}`);
-    //         personFloor.setAttribute('title', `Весь ${personFloorValue}-й этаж занят!`);
-    //     } else return
+    console.log(firstFloorArray);
+    console.log(secondFloorArray);
+    console.log(thirdFloorArray);
+    console.log(fourthFloorArray);
+    console.log(fifthFloorArray);
 
 
-    // }
+    // let lodgersAll = JSON.parse(localStorage.getItem('lodgersAll')),
+    //     firstFloorArray = [],
+    //     secondFloorArray = [],
+    //     thirdFloorArray = [],
+    //     fourthFloorArray = [],
+    //     fifthFloorArray = [];
+
+
+    // firstFloorArray = lodgersAll.filter(function(item) {
+    //     return item.floor === "1";
+    // });
+
+    // firstFloorArray.forEach(function(item, i) {
+
+    //     i = i + 1;
+
+    //     // creat li element
+    //     const li = document.createElement('li');
+    //     // add class
+    //     li.className = 'house__person';
+
+    //     if (item.sex === "Мужской") {
+    //        li.style.backgroundImage = "url('../img/boy.svg')";
+    //     } else if (item.sex === "Женский"){
+    //         li.style.backgroundImage = "url('../img/girl.svg')";
+    //     }
+
+    //     firstFloor.appendChild(li);
+
+    // });
+
+    // secondFloorArray = lodgersAll.filter(function(item) {
+    //     return item.floor === "2";
+    // });
+
+    // thirdFloorArray = lodgersAll.filter(function(item) {
+    //     return item.floor === "3";
+    // });
+
+    // fourthFloorArray = lodgersAll.filter(function(item) {
+    //     return item.floor === "4";
+    // });
+
+    // fifthFloorArray = lodgersAll.filter(function(item) {
+    //     return item.floor === "5";
+    // });
+
+    checkFirstFloor(firstFloorArray);
+    checkSecondFloor(secondFloorArray);
+    checkThirdFloor(thirdFloorArray);
+    checkFourthFloor(fourthFloorArray);
+    checkFifthFloor(fifthFloorArray);
+
+
+
+}
+
+// Check if theres 3 lodger on the floor
+function checkFirstFloor(firstFloorArray) {
+    if(firstFloorArray.length > 2) {
+        regArray.push("1");
+    }
+}
+
+function checkSecondFloor(secondFloorArray) {
+    if(secondFloorArray.length > 2) {
+        regArray.push("2");
+    }
+}
+
+function checkThirdFloor(thirdFloorArray) {
+    if(thirdFloorArray.length > 2) {
+        regArray.push("3");
+    }
+}
+
+function checkFourthFloor(fourthFloorArray) {
+    if(fourthFloorArray.length > 2) {
+        regArray.push("4");
+    }
+}
+
+function checkFifthFloor(fifthFloorArray) {
+    if(fifthFloorArray.length > 2) {
+        regArray.push("5");
+    }
 }
 
 
-
-// function checkFloorArrays(firstFloorArray) {
-
-//     // const personFloorValue = personFloor.value
-
-//     if (firstFloorArray.length > 2) {
-//         personFloor.setAttribute('pattern', '[2-5]{1}');
-//         personFloor.setAttribute('title', 'Весь 1-й этаж занят!');
-
-//     } else if (firstFloorArray.length > 2 || secondFloorArray.length > 2)
-// }
-
-// function checkFloorArrays(secondFloorArray) {
-
-//     // const personFloorValue = personFloor.value
-
-//     if (secondFloorArray.length > 2) {
-//         personFloor.setAttribute('pattern', '[1,3-5]{1}');
-//         personFloor.setAttribute('title', 'Весь 2-й этаж занят!');
-//     }
-// }
-
-// function checkFloorArrays(thirdFloorArray) {
-
-//     // const personFloorValue = personFloor.value
-
-//     if (thirdFloorArray.length > 2) {
-//         personFloor.setAttribute('pattern', '[1-2,4-5]{1}');
-//         personFloor.setAttribute('title', 'Весь 3-й этаж занят!');
-//     }
-// }
-
-// function checkFloorArrays(fourthFloorArray) {
-
-//     // const personFloorValue = personFloor.value
-
-//     if (fourthFloorArray.length > 2) {
-//         personFloor.setAttribute('pattern', '[1-3,5]{1}');
-//         personFloor.setAttribute('title', 'Весь 4-й этаж занят!');
-//     }
-// }
-
-// function checkFloorArrays(fifthFloorArray) {
-
-//     // const personFloorValue = personFloor.value
-
-//     if (fifthFloorArray.length > 2) {
-//         personFloor.setAttribute('pattern', '[1-4]{1}');
-//         personFloor.setAttribute('title', 'Весь 5-й этаж занят!');
-//     }
-// }
-
-
-
-
-
+// Remove unwanted numbers & occupied floors from input
+function checkFloorInput () {
+    console.log(regArray);
+    var regExp = new RegExp("[" + regArray + "]");
+    if(regExp.test(this.value)) {
+        alert('Введите правильный номер этажа');
+    } else return
+}

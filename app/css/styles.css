@@ -94,7 +94,8 @@ ul {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  list-style-type: none; }
 
 .house__person {
   width: 137px;
