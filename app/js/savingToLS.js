@@ -10,18 +10,129 @@ const personName = document.getElementById('personName'),
     thirdFloor = document.getElementById('3rdFloor'),
     fourthFloor = document.getElementById('4thFloor'),
     fifthFloor = document.getElementById('5thFloor'),
+    lodgersAllFloored = [],
     regArray= ['0','6', '7', '8', '9'];
 
 let firstFloorArray = [],
     secondFloorArray = [],
     thirdFloorArray = [],
     fourthFloorArray = [],
-    fifthFloorArray = [];
+    fifthFloorArray = [],
+    lodgersAll;
 
 
 // Event Listeners
+document.addEventListener('DOMContentLoaded', getLodgersFromLS);
 formSubmit.addEventListener('submit', submitLodgerToLS);
 personFloor.addEventListener('keyup', checkFloorInput);
+
+
+
+function getLodgersFromLS() {
+
+    if (localStorage.getItem('lodgersAll') === null) {
+    lodgersAll = [];
+    
+    } else {
+        lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
+    } 
+
+    lodgersAll.forEach(function(item) {
+
+        if (item.floor === "1") {
+            firstFloorArray.push(item);
+            //  creat li element
+            const liFirst = document.createElement('li');
+            // add class
+            liFirst.className = 'house__person';
+    
+            if (item.sex === "Мужской") {
+               liFirst.style.backgroundImage = "url('../img/boy.svg')";
+            } else if (item.sex === "Женский"){
+                liFirst.style.backgroundImage = "url('../img/girl.svg')";
+            }
+            firstFloor.appendChild(liFirst);
+    
+            // lodgersAllFloored.push(firstFloorArray);
+    
+        } else if (item.floor === "2") {
+            secondFloorArray.push(item);
+            //  creat li element
+            const liSec = document.createElement('li');
+            // add class
+            liSec.className = 'house__person';
+    
+            if (item.sex === "Мужской") {
+               liSec.style.backgroundImage = "url('../img/boy.svg')";
+            } else if (item.sex === "Женский"){
+                liSec.style.backgroundImage = "url('../img/girl.svg')";
+            }
+            secondFloor.appendChild(liSec);
+    
+            // lodgersAllFloored.push(secondFloorArray);
+        } else if (item.floor === "3") {
+            thirdFloorArray.push(item);
+            //  creat li element
+            const liThird = document.createElement('li');
+            // add class
+            liThird.className = 'house__person';
+    
+            if (item.sex === "Мужской") {
+               liThird.style.backgroundImage = "url('../img/boy.svg')";
+            } else if (item.sex === "Женский"){
+                liThird.style.backgroundImage = "url('../img/girl.svg')";
+            }
+            thirdFloor.appendChild(liThird);
+    
+            // lodgersAllFloored.push(thirdFloorArray);
+        } else if (item.floor === "4") {
+            fourthFloorArray.push(item);
+             //  creat li element
+             const liFour = document.createElement('li');
+             // add class
+             liFour.className = 'house__person';
+     
+             if (item.sex === "Мужской") {
+                liFour.style.backgroundImage = "url('../img/boy.svg')";
+             } else if (item.sex === "Женский"){
+                 liFour.style.backgroundImage = "url('../img/girl.svg')";
+             }
+             fourthFloor.appendChild(liFour);
+    
+            //  lodgersAllFloored.push(fourthFloorArray);
+        } else if (item.floor === "5") {
+            fifthFloorArray.push(item);
+             //  creat li element
+             const liFifth = document.createElement('li');
+             // add class
+             liFifth.className = 'house__person';
+     
+             if (item.sex === "Мужской") {
+                liFifth.style.backgroundImage = "url('../img/boy.svg')";
+             } else if (item.sex === "Женский"){
+                 liFifth.style.backgroundImage = "url('../img/girl.svg')";
+             }
+             fifthFloor.appendChild(liFifth);
+    
+            //  lodgersAllFloored.push(fifthFloorArray);
+        }
+    });
+
+    console.log(firstFloorArray);
+    console.log(secondFloorArray);
+    console.log(thirdFloorArray);
+    console.log(fourthFloorArray);
+    console.log(fifthFloorArray);
+
+    checkFirstFloor(firstFloorArray);
+    checkSecondFloor(secondFloorArray);
+    checkThirdFloor(thirdFloorArray);
+    checkFourthFloor(fourthFloorArray);
+    checkFifthFloor(fifthFloorArray);
+
+}
+
+
 
 // Adding person info to LS
 function submitLodgerToLS(e) {
@@ -53,13 +164,15 @@ function submitLodgerToLS(e) {
     e.preventDefault();
 }
 
+
+
 // Checking if all the data had been entered
 function checkIfEmpty(person) {
     if (person.name === '' ||
     person.sex.value === null ||
     person.floor === '' ||
     person.rooms === '' ||
-    person.extras === null ||
+    // person.extras === null ||
     person.roommates === '') {
         alert ('Введите все данные жильца');
     } else return
@@ -68,15 +181,6 @@ function checkIfEmpty(person) {
 // Store person object in LS
 var counter = 0;
 function storeLodgerInLS(person) {
-
-    let lodgersAll;
-
-    if (localStorage.getItem('lodgersAll') === null) {
-    lodgersAll = [];
-    
-    } else {
-        lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
-    } 
 
     lodgersAll.push(person);
     localStorage.setItem('lodgersAll', JSON.stringify(lodgersAll));
@@ -97,44 +201,85 @@ function storeLodgerInLS(person) {
 }
 
 
-
 // Add person to DOM
-// function addPersonToDOM(person) {
-
-//     let firstFloorArray = [],
-//         secondFloorArray = [],
-//         thirdFloorArray = [],
-//         fourthFloorArray = [],
-//         fifthFloorArray = [];
-
-//     if (person.floor === 1) {
-//         firstFloorArray.push(person);
-//     } else if (person.floor === 2) {
-//         secondFloorArray.push(person);
-//     } else if (person.floor === 3) {
-//         thirdFloorArray.push(person);
-//     } else if (person.floor === 4) {
-//         fourthFloorArray.push(person);
-//     } else if (person.floor === 5) {
-//         fifthFloorArray.push(person);
-//     }
-
-// }
-
-
-// Add person object to DOM
 function addLodgerToDOM(person) {
 
     if (person.floor === "1") {
         firstFloorArray.push(person);
+        //  creat li element
+        const liFirst = document.createElement('li');
+        // add class
+        liFirst.className = 'house__person';
+
+        if (person.sex === "Мужской") {
+           liFirst.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (person.sex === "Женский"){
+            liFirst.style.backgroundImage = "url('../img/girl.svg')";
+        }
+        firstFloor.appendChild(liFirst);
+
+        // lodgersAllFloored.push(firstFloorArray);
+
     } else if (person.floor === "2") {
         secondFloorArray.push(person);
+        //  creat li element
+        const liSec = document.createElement('li');
+        // add class
+        liSec.className = 'house__person';
+
+        if (person.sex === "Мужской") {
+           liSec.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (person.sex === "Женский"){
+            liSec.style.backgroundImage = "url('../img/girl.svg')";
+        }
+        secondFloor.appendChild(liSec);
+
+        // lodgersAllFloored.push(secondFloorArray);
     } else if (person.floor === "3") {
         thirdFloorArray.push(person);
+        //  creat li element
+        const liThird = document.createElement('li');
+        // add class
+        liThird.className = 'house__person';
+
+        if (person.sex === "Мужской") {
+           liThird.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (person.sex === "Женский"){
+            liThird.style.backgroundImage = "url('../img/girl.svg')";
+        }
+        thirdFloor.appendChild(liThird);
+
+        // lodgersAllFloored.push(thirdFloorArray);
     } else if (person.floor === "4") {
         fourthFloorArray.push(person);
+         //  creat li element
+         const liFour = document.createElement('li');
+         // add class
+         liFour.className = 'house__person';
+ 
+         if (person.sex === "Мужской") {
+            liFour.style.backgroundImage = "url('../img/boy.svg')";
+         } else if (person.sex === "Женский"){
+             liFour.style.backgroundImage = "url('../img/girl.svg')";
+         }
+         fourthFloor.appendChild(liFour);
+
+        //  lodgersAllFloored.push(fourthFloorArray);
     } else if (person.floor === "5") {
         fifthFloorArray.push(person);
+         //  creat li element
+         const liFifth = document.createElement('li');
+         // add class
+         liFifth.className = 'house__person';
+ 
+         if (person.sex === "Мужской") {
+            liFifth.style.backgroundImage = "url('../img/boy.svg')";
+         } else if (person.sex === "Женский"){
+             liFifth.style.backgroundImage = "url('../img/girl.svg')";
+         }
+         fifthFloor.appendChild(liFifth);
+
+        //  lodgersAllFloored.push(fifthFloorArray);
     }
 
     console.log(firstFloorArray);
@@ -143,61 +288,11 @@ function addLodgerToDOM(person) {
     console.log(fourthFloorArray);
     console.log(fifthFloorArray);
 
-
-    // let lodgersAll = JSON.parse(localStorage.getItem('lodgersAll')),
-    //     firstFloorArray = [],
-    //     secondFloorArray = [],
-    //     thirdFloorArray = [],
-    //     fourthFloorArray = [],
-    //     fifthFloorArray = [];
-
-
-    // firstFloorArray = lodgersAll.filter(function(item) {
-    //     return item.floor === "1";
-    // });
-
-    // firstFloorArray.forEach(function(item, i) {
-
-    //     i = i + 1;
-
-    //     // creat li element
-    //     const li = document.createElement('li');
-    //     // add class
-    //     li.className = 'house__person';
-
-    //     if (item.sex === "Мужской") {
-    //        li.style.backgroundImage = "url('../img/boy.svg')";
-    //     } else if (item.sex === "Женский"){
-    //         li.style.backgroundImage = "url('../img/girl.svg')";
-    //     }
-
-    //     firstFloor.appendChild(li);
-
-    // });
-
-    // secondFloorArray = lodgersAll.filter(function(item) {
-    //     return item.floor === "2";
-    // });
-
-    // thirdFloorArray = lodgersAll.filter(function(item) {
-    //     return item.floor === "3";
-    // });
-
-    // fourthFloorArray = lodgersAll.filter(function(item) {
-    //     return item.floor === "4";
-    // });
-
-    // fifthFloorArray = lodgersAll.filter(function(item) {
-    //     return item.floor === "5";
-    // });
-
     checkFirstFloor(firstFloorArray);
     checkSecondFloor(secondFloorArray);
     checkThirdFloor(thirdFloorArray);
     checkFourthFloor(fourthFloorArray);
     checkFifthFloor(fifthFloorArray);
-
-
 
 }
 
@@ -241,3 +336,14 @@ function checkFloorInput () {
         alert('Введите правильный номер этажа');
     } else return
 }
+
+// // Filtering through lodgers
+// function filter() {
+//     if (localStorage.getItem('lodgersAll') === null) {
+//         alert('Фильтровать некого!');   
+//     } else {
+//         lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
+//     } 
+
+
+// }

@@ -85,7 +85,8 @@ ul {
   position: absolute;
   z-index: 103;
   bottom: 229px;
-  left: 142px; }
+  left: 142px;
+  margin: 0 1px; }
 
 .house__floor {
   width: 410px;
@@ -98,12 +99,12 @@ ul {
   list-style-type: none; }
 
 .house__person {
-  width: 137px;
+  width: 136px;
   height: 130px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 27px;
-  background-position: 42px 43px;
+  background-position: center 41px;
   background-repeat: no-repeat; }
 
 .dayNight-checkbox {

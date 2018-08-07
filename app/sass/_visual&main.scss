@@ -25,6 +25,7 @@
         z-index: 103;
         bottom: 229px;
         left: 142px;
+        margin: 0 1px;
     }
     
     &__floor {
@@ -36,11 +37,11 @@
     }
 
     &__person {
-        width: 137px;
+        width: 136px;
         height: 130px;
         box-sizing: border-box;
         padding: 27px;
-        background-position: 42px 43px;
+        background-position: center 41px;
         background-repeat: no-repeat;
     }
 
