@@ -15,8 +15,34 @@
 
     <div class="container">
         <div class="visual">
-            <div class="visual__image">
+            <div class="visual__image house">
                 <img id="houseImg" src="img/house_day.png" alt="">
+                <div class="house__floors">
+                    <div id="5thFloor" class="house__floor">
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                    </div>
+                    <div id="4thFloor" class="house__floor">
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                    </div>
+                    <div id="3rdFloor" class="house__floor">
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                    </div>
+                    <div id="2ndFloor" class="house__floor"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                    <div id="1stFloor" class="house__floor">
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                        <div class="house__person"></div>
+                    </div>
+                </div>       
             </div>
             <div class="visual__switch dayNight">
                 <input class="dayNight-checkbox" type="checkbox" id="dayNightSwitch" />
@@ -41,18 +67,18 @@
                             <p class="form__text">Пол</p>
                             <div class="form__slider">
                                 <div class="form__slider_element">
-                                    <input type="radio" id="mRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Мужской">
+                                    <input type="radio" id="mRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Мужской" checked>
                                     <label for="mRadioAdd" class="form__slider_radio">Мужской</label>
                                 </div>
                                 <div class="form__slider_element">
-                                    <input type="radio" id="wRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Женский" checked>
+                                    <input type="radio" id="wRadioAdd" class="form__slider_input" name="sexSliderAdd" value="Женский">
                                     <label for="wRadioAdd" class="form__slider_radio">Женский</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form__floor form__block">
                             <p class="form__text">Этаж</p>
-                            <input class="form__input" type="number" id="personFloor">
+                            <input class="form__input" type="text" id="personFloor">
                         </div>
                         <div class="form__rooms form__block">
                             <p class="form__text">Кол-во комнат</p>
@@ -71,7 +97,7 @@
                             <p class="form__text">Дополнительно</p>
                             <div class="form__radio">
                                 <label for="pets__add" class="form__radio-item ">
-                                    <input type="checkbox" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add" checked>
+                                    <input type="checkbox" name="extra__add" value="Домашние животные" class="form__radio-input" id="pets__add" >
                                     <span class="form__radio-text">Домашние животные</span>
                                 </label>
                                 <label for="tv__add" class="form__radio-item">

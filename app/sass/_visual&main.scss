@@ -5,12 +5,43 @@
 
     &__image {
         margin-bottom: 21px;
+        
     }
+
+    
 
     &__switch {
         display: flex;
         justify-content: center;
         align-self: flex-start;
+    }
+
+}
+
+.house {
+
+    &__floors {
+        position: absolute;
+        z-index: 103;
+        bottom: 229px;
+        left: 142px;
+    }
+    
+    &__floor {
+        width: 410px;
+        height: 130px;
+        margin-bottom: 2px;
+        display: flex;
+    }
+
+    &__person {
+        width: 137px;
+        height: 130px;
+        box-sizing: border-box;
+        padding: 27px;
+        // background-image: url('../img/girl.svg');
+        background-position: 42px 43px;
+        background-repeat: no-repeat;
     }
 
 }
