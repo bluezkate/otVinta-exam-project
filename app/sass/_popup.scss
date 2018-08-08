@@ -12,6 +12,16 @@
         border-bottom: solid 1px #EAECF0;
     }
 
+    &__name {
+        position: relative;
+        &::after {
+            width: 19px;
+            height: 19px;
+            background-image: url('../img/cross.svg');
+            position: absolute;
+        }
+    }
+
     &__blocks {
         display: flex;
         justify-content: space-between;

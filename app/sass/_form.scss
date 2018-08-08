@@ -1,4 +1,3 @@
-
 .form {
 
     width: 640px;
@@ -16,10 +15,21 @@
         display: flex;
     }
 
+
     &__heading {
         font-size: 24px;
         padding: 30px 35px 26px 35px;
         border-bottom: solid 1px #EAECF0;
+
+
+    }
+
+    &__name {
+                &::after {
+            width: 19px;
+            height: 19px;
+            background-image: url('../img/cross.svg');
+        }
     }
 
     &__slider {

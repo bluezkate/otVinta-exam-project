@@ -24,6 +24,7 @@ h1 {
   margin: 0; }
 
 h3 {
+  font-size: 24px;
   margin: 0; }
 
 button {
@@ -230,6 +231,10 @@ ul {
     font-size: 24px;
     padding: 30px 35px 26px 35px;
     border-bottom: solid 1px #EAECF0; }
+  .form__name::after {
+    width: 19px;
+    height: 19px;
+    background-image: url("../img/cross.svg"); }
   .form__slider {
     width: 427px;
     height: 49px;
@@ -433,6 +438,13 @@ ul {
     font-size: 25px;
     font-family: Helvetica;
     border-bottom: solid 1px #EAECF0; }
+  .popup__name {
+    position: relative; }
+    .popup__name::after {
+      width: 19px;
+      height: 19px;
+      background-image: url("../img/cross.svg");
+      position: absolute; }
   .popup__blocks {
     display: -webkit-box;
     display: -webkit-flex;

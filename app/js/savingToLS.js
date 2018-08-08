@@ -18,7 +18,7 @@ const personName = document.getElementById('personName'),
     popupHeading = document.getElementById('popupHeading'),
     popupSex = document.getElementById('popupSex'),
     popupRooms = document.getElementById('popupRooms'),
-    popupNeibours = document.getElementById('popupNeibours'),
+    popupRoommates = document.getElementById('popupRoommates'),
     popupFloor = document.getElementById('popupFloor'),
     popupExtra = document.getElementById('popupExtra'),
     lodgersAllFloored = [],
@@ -37,25 +37,33 @@ document.addEventListener('DOMContentLoaded', getLodgersFromLS);
 formSubmit.addEventListener('submit', submitLodgerToLS);
 personFloor.addEventListener('keyup', checkFloorInput);
 filterLodgers.addEventListener('submit', filter);
-// house.addEventListener('click', popup);
+house.addEventListener('click', popup);
 
-// // Popup window on lodger click
-// function popup(event, item) {
-//     let target = event.target;
+// Popup window on lodger click
+function popup(event) {
+    let target = event.target,
+    lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
 
-//     while(target != house) {
-//         if(target.tagName == 'LI') {
-//             mainWindow.classList.add('hidden');
-//             popupWindow.classList.remove('hidden');
-//             popupHeading.innerHTML = item.name;
-//             popupSex.innerText = item.sex;
-//             popupRooms.innerText = item.rooms;
-//             // popupNeibours.innerText = 
-            
-//             return
-//         }
-//     }   target = target.parentNode;
-// }
+
+    while(target != house) {
+            if(target.tagName == 'LI') {
+
+            mainWindow.classList.add('hidden');
+            popupWindow.classList.remove('hidden');
+            popupHeading.innerHTML = lodgersAll[target.id].name;
+            popupSex.innerText = lodgersAll[target.id].sex;
+            popupRooms.innerText = lodgersAll[target.id].rooms;
+            popupRoommates.innerText = lodgersAll[target.id].roommates;
+            popupFloor.innerText = lodgersAll[target.id].floor;
+            popupExtra.innerText = lodgersAll[target.id].extras;
+
+
+            return
+            }
+        }   target = target.parentNode;
+        
+    event.preventDefault();
+}
 
 
 
@@ -68,9 +76,7 @@ function getLodgersFromLS() {
         lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
     } 
 
-
-
-    lodgersAll.forEach(function(item) {
+    lodgersAll.forEach(function(item, i) {
 
         if (item.floor === "1") {
             firstFloorArray.push(item);
@@ -78,6 +84,8 @@ function getLodgersFromLS() {
             const liFirst = document.createElement('li');
             // add class
             liFirst.className = 'house__person';
+            // add id
+            liFirst.id = i;
     
             if (item.sex === "Мужской") {
                liFirst.style.backgroundImage = "url('../img/boy.svg')";
@@ -86,14 +94,14 @@ function getLodgersFromLS() {
             }
             firstFloor.appendChild(liFirst);
     
-            // lodgersAllFloored.push(firstFloorArray);
-    
         } else if (item.floor === "2") {
             secondFloorArray.push(item);
             //  creat li element
             const liSec = document.createElement('li');
             // add class
             liSec.className = 'house__person';
+            // add id
+            liSec.id = i;
     
             if (item.sex === "Мужской") {
                liSec.style.backgroundImage = "url('../img/boy.svg')";
@@ -101,15 +109,15 @@ function getLodgersFromLS() {
                 liSec.style.backgroundImage = "url('../img/girl.svg')";
             }
             secondFloor.appendChild(liSec);
-            // house.addEventListener('click', popup);
-    
-            // lodgersAllFloored.push(secondFloorArray);
+
         } else if (item.floor === "3") {
             thirdFloorArray.push(item);
             //  creat li element
             const liThird = document.createElement('li');
             // add class
             liThird.className = 'house__person';
+            // add id
+            liThird.id = i;
     
             if (item.sex === "Мужской") {
                liThird.style.backgroundImage = "url('../img/boy.svg')";
@@ -117,36 +125,39 @@ function getLodgersFromLS() {
                 liThird.style.backgroundImage = "url('../img/girl.svg')";
             }
             thirdFloor.appendChild(liThird);
-    
-            // lodgersAllFloored.push(thirdFloorArray);
+
         } else if (item.floor === "4") {
             fourthFloorArray.push(item);
-             //  creat li element
-             const liFour = document.createElement('li');
-             // add class
-             liFour.className = 'house__person';
-     
-             if (item.sex === "Мужской") {
-                liFour.style.backgroundImage = "url('../img/boy.svg')";
-             } else if (item.sex === "Женский"){
-                 liFour.style.backgroundImage = "url('../img/girl.svg')";
-             }
-             fourthFloor.appendChild(liFour);
+            //  creat li element
+            const liFour = document.createElement('li');
+            // add class
+            liFour.className = 'house__person';
+            // add id
+            liFour.id = i;
+    
+            if (item.sex === "Мужской") {
+            liFour.style.backgroundImage = "url('../img/boy.svg')";
+            } else if (item.sex === "Женский"){
+                liFour.style.backgroundImage = "url('../img/girl.svg')";
+            }
+            fourthFloor.appendChild(liFour);
     
             //  lodgersAllFloored.push(fourthFloorArray);
         } else if (item.floor === "5") {
             fifthFloorArray.push(item);
-             //  creat li element
-             const liFifth = document.createElement('li');
-             // add class
-             liFifth.className = 'house__person';
-     
-             if (item.sex === "Мужской") {
-                liFifth.style.backgroundImage = "url('../img/boy.svg')";
-             } else if (item.sex === "Женский"){
-                 liFifth.style.backgroundImage = "url('../img/girl.svg')";
-             }
-             fifthFloor.appendChild(liFifth);
+            //  creat li element
+            const liFifth = document.createElement('li');
+            // add class
+            liFifth.className = 'house__person';
+            // add id
+            liFifth.id = i;
+    
+            if (item.sex === "Мужской") {
+            liFifth.style.backgroundImage = "url('../img/boy.svg')";
+            } else if (item.sex === "Женский"){
+                liFifth.style.backgroundImage = "url('../img/girl.svg')";
+            }
+            fifthFloor.appendChild(liFifth);
     
             //  lodgersAllFloored.push(fifthFloorArray);
         }
@@ -238,14 +249,17 @@ function storeLodgerInLS(person) {
 // Add person to DOM
 function addLodgerToDOM(person) {
 
-    // lodgersAll = 
+    lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
 
     if (person.floor === "1") {
+
         firstFloorArray.push(person);
         //  creat li element
         const liFirst = document.createElement('li');
         // add class
         liFirst.className = 'house__person';
+        // add id
+        liFirst.id = lodgersAll.length - 1;
 
         if (person.sex === "Мужской") {
            liFirst.style.backgroundImage = "url('../img/boy.svg')";
@@ -255,14 +269,16 @@ function addLodgerToDOM(person) {
         firstFloor.appendChild(liFirst);
 
         lodgersAllFloored[0] = firstFloorArray;
-        console.log(lodgersAllFloored);
 
     } else if (person.floor === "2") {
+
         secondFloorArray.push(person);
         //  creat li element
         const liSec = document.createElement('li');
         // add class
         liSec.className = 'house__person';
+        // add id
+        liSec.id = lodgersAll.length - 1;
 
         if (person.sex === "Мужской") {
            liSec.style.backgroundImage = "url('../img/boy.svg')";
@@ -272,15 +288,16 @@ function addLodgerToDOM(person) {
         secondFloor.appendChild(liSec);
 
         lodgersAllFloored[1] = secondFloorArray;
-        console.log(lodgersAllFloored);
 
-        // lodgersAllFloored.push(secondFloorArray);
     } else if (person.floor === "3") {
+
         thirdFloorArray.push(person);
         //  creat li element
         const liThird = document.createElement('li');
         // add class
         liThird.className = 'house__person';
+        // add id
+        liThird.id = lodgersAll.length - 1;
 
         if (person.sex === "Мужской") {
            liThird.style.backgroundImage = "url('../img/boy.svg')";
@@ -290,45 +307,43 @@ function addLodgerToDOM(person) {
         thirdFloor.appendChild(liThird);
 
         lodgersAllFloored[2] = thirdFloorArray;
-        console.log(lodgersAllFloored);
 
-        // lodgersAllFloored.push(thirdFloorArray);
     } else if (person.floor === "4") {
         fourthFloorArray.push(person);
-         //  creat li element
-         const liFour = document.createElement('li');
-         // add class
-         liFour.className = 'house__person';
- 
-         if (person.sex === "Мужской") {
-            liFour.style.backgroundImage = "url('../img/boy.svg')";
-         } else if (person.sex === "Женский"){
-             liFour.style.backgroundImage = "url('../img/girl.svg')";
-         }
-         fourthFloor.appendChild(liFour);
+        //  creat li element
+        const liFour = document.createElement('li');
+        // add class
+        liFour.className = 'house__person';
+        // add id
+        liFour.id = lodgersAll.length - 1;
 
-         lodgersAllFloored[3] = fourthFloorArray;
-         console.log(lodgersAllFloored);
+        if (person.sex === "Мужской") {
+        liFour.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (person.sex === "Женский"){
+            liFour.style.backgroundImage = "url('../img/girl.svg')";
+        }
+        fourthFloor.appendChild(liFour);
 
-        //  lodgersAllFloored.push(fourthFloorArray);
+        lodgersAllFloored[3] = fourthFloorArray;
+
     } else if (person.floor === "5") {
+
         fifthFloorArray.push(person);
          //  creat li element
-         const liFifth = document.createElement('li');
-         // add class
-         liFifth.className = 'house__person';
- 
-         if (person.sex === "Мужской") {
-            liFifth.style.backgroundImage = "url('../img/boy.svg')";
-         } else if (person.sex === "Женский"){
-             liFifth.style.backgroundImage = "url('../img/girl.svg')";
-         }
-         fifthFloor.appendChild(liFifth);
+        const liFifth = document.createElement('li');
+        // add class
+        liFifth.className = 'house__person';
+        // add id
+        liFifth.id = lodgersAll.length - 1;
 
-         lodgersAllFloored[4] = fifthFloorArray;
-         console.log(lodgersAllFloored);
+        if (person.sex === "Мужской") {
+        liFifth.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (person.sex === "Женский"){
+            liFifth.style.backgroundImage = "url('../img/girl.svg')";
+        }
+        fifthFloor.appendChild(liFifth);
 
-        //  lodgersAllFloored.push(fifthFloorArray);
+        lodgersAllFloored[4] = fifthFloorArray;
     }
 
     console.log(firstFloorArray);
@@ -337,100 +352,44 @@ function addLodgerToDOM(person) {
     console.log(fourthFloorArray);
     console.log(fifthFloorArray);
 
-    // lodgersAllFloored.push(firstFloorArray);
-    // console.log(lodgersAllFloored);
-    // lodgersAllFloored.push(secondFloorArray);
-    // console.log(lodgersAllFloored);
-    // lodgersAllFloored.push(thirdFloorArray);
-    // console.log(lodgersAllFloored);
-    //  lodgersAllFloored.push(fourthFloorArray);
-    //  console.log(lodgersAllFloored);
-    //  lodgersAllFloored.push(fifthFloorArray);
-    //  console.log(lodgersAllFloored);
-
     checkFirstFloor(firstFloorArray);
     checkSecondFloor(secondFloorArray);
     checkThirdFloor(thirdFloorArray);
     checkFourthFloor(fourthFloorArray);
     checkFifthFloor(fifthFloorArray);
 
-    // createAllFloored();
 }
 
 // Check if theres 3 lodger on the floor
 function checkFirstFloor(firstFloorArray) {
     if(firstFloorArray.length > 2) {
         regArray.push("1");
-
-    //     lodgersAllFloored.push(firstFloorArray);
-    // console.log(lodgersAllFloored);
     }
 }
 
 function checkSecondFloor(secondFloorArray) {
     if(secondFloorArray.length > 2) {
         regArray.push("2");
-
-    //     lodgersAllFloored.push(secondFloorArray);
-    // console.log(lodgersAllFloored);
     }
 }
 
 function checkThirdFloor(thirdFloorArray) {
     if(thirdFloorArray.length > 2) {
         regArray.push("3");
-
-    //     lodgersAllFloored.push(thirdFloorArray);
-    // console.log(lodgersAllFloored);
     }
 }
 
 function checkFourthFloor(fourthFloorArray) {
     if(fourthFloorArray.length > 2) {
         regArray.push("4");
-
-    //     lodgersAllFloored.push(fourthFloorArray);
-    //  console.log(lodgersAllFloored);
     }
 }
 
 function checkFifthFloor(fifthFloorArray) {
     if(fifthFloorArray.length > 2) {
         regArray.push("5");
-
-    //     lodgersAllFloored.push(fifthFloorArray);
-    //  console.log(lodgersAllFloored);
     }
 }
-
-// Create an array of floor arrays 
-// function createAllFloored() {
-//     if(firstFloorArray.length > 2 && lodgersAllFloored.length < 1) {
-//         lodgersAllFloored.push(firstFloorArray);
-//         console.log(lodgersAllFloored);
-//         if(secondFloorArray.length > 2  && lodgersAllFloored.length < 2) {
-//             lodgersAllFloored.push(secondFloorArray);
-//             console.log(lodgersAllFloored);
-//             if(thirdFloorArray.length > 2  && lodgersAllFloored.length < 3) {
-//                 lodgersAllFloored.push(thirdFloorArray);
-//                 console.log(lodgersAllFloored);
-//                 if(fourthFloorArray.length > 2  && lodgersAllFloored.length < 4) {
-//                     lodgersAllFloored.push(fourthFloorArray);
-//                     console.log(lodgersAllFloored);
-//                     if (fifthFloorArray.length > 2  && lodgersAllFloored.length < 5) {
-//                         lodgersAllFloored.push(fifthFloorArray);
-//                         console.log(lodgersAllFloored);
-//                     } else return
-
-//                 } else return
-
-//             } else return
-
-//         } else return
-
-//     } else return
-// }
-
 
 // Remove unwanted numbers & occupied floors from input
 function checkFloorInput () {
