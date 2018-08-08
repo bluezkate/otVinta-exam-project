@@ -10,6 +10,17 @@ const personName = document.getElementById('personName'),
     thirdFloor = document.getElementById('3rdFloor'),
     fourthFloor = document.getElementById('4thFloor'),
     fifthFloor = document.getElementById('5thFloor'),
+    filterLodgers = document.getElementById('filter'),
+    // filterRooms = ,
+    house = document.getElementById('house__whole'),
+    mainWindow = document.querySelector('.main'),
+    popupWindow = document.querySelector('.popup'),
+    popupHeading = document.getElementById('popupHeading'),
+    popupSex = document.getElementById('popupSex'),
+    popupRooms = document.getElementById('popupRooms'),
+    popupNeibours = document.getElementById('popupNeibours'),
+    popupFloor = document.getElementById('popupFloor'),
+    popupExtra = document.getElementById('popupExtra'),
     lodgersAllFloored = [],
     regArray= ['0','6', '7', '8', '9'];
 
@@ -25,6 +36,26 @@ let firstFloorArray = [],
 document.addEventListener('DOMContentLoaded', getLodgersFromLS);
 formSubmit.addEventListener('submit', submitLodgerToLS);
 personFloor.addEventListener('keyup', checkFloorInput);
+filterLodgers.addEventListener('submit', filter);
+// house.addEventListener('click', popup);
+
+// // Popup window on lodger click
+// function popup(event, item) {
+//     let target = event.target;
+
+//     while(target != house) {
+//         if(target.tagName == 'LI') {
+//             mainWindow.classList.add('hidden');
+//             popupWindow.classList.remove('hidden');
+//             popupHeading.innerHTML = item.name;
+//             popupSex.innerText = item.sex;
+//             popupRooms.innerText = item.rooms;
+//             // popupNeibours.innerText = 
+            
+//             return
+//         }
+//     }   target = target.parentNode;
+// }
 
 
 
@@ -36,6 +67,8 @@ function getLodgersFromLS() {
     } else {
         lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
     } 
+
+
 
     lodgersAll.forEach(function(item) {
 
@@ -68,6 +101,7 @@ function getLodgersFromLS() {
                 liSec.style.backgroundImage = "url('../img/girl.svg')";
             }
             secondFloor.appendChild(liSec);
+            // house.addEventListener('click', popup);
     
             // lodgersAllFloored.push(secondFloorArray);
         } else if (item.floor === "3") {
@@ -204,6 +238,8 @@ function storeLodgerInLS(person) {
 // Add person to DOM
 function addLodgerToDOM(person) {
 
+    // lodgersAll = 
+
     if (person.floor === "1") {
         firstFloorArray.push(person);
         //  creat li element
@@ -218,7 +254,8 @@ function addLodgerToDOM(person) {
         }
         firstFloor.appendChild(liFirst);
 
-        // lodgersAllFloored.push(firstFloorArray);
+        lodgersAllFloored[0] = firstFloorArray;
+        console.log(lodgersAllFloored);
 
     } else if (person.floor === "2") {
         secondFloorArray.push(person);
@@ -233,6 +270,9 @@ function addLodgerToDOM(person) {
             liSec.style.backgroundImage = "url('../img/girl.svg')";
         }
         secondFloor.appendChild(liSec);
+
+        lodgersAllFloored[1] = secondFloorArray;
+        console.log(lodgersAllFloored);
 
         // lodgersAllFloored.push(secondFloorArray);
     } else if (person.floor === "3") {
@@ -249,6 +289,9 @@ function addLodgerToDOM(person) {
         }
         thirdFloor.appendChild(liThird);
 
+        lodgersAllFloored[2] = thirdFloorArray;
+        console.log(lodgersAllFloored);
+
         // lodgersAllFloored.push(thirdFloorArray);
     } else if (person.floor === "4") {
         fourthFloorArray.push(person);
@@ -263,6 +306,9 @@ function addLodgerToDOM(person) {
              liFour.style.backgroundImage = "url('../img/girl.svg')";
          }
          fourthFloor.appendChild(liFour);
+
+         lodgersAllFloored[3] = fourthFloorArray;
+         console.log(lodgersAllFloored);
 
         //  lodgersAllFloored.push(fourthFloorArray);
     } else if (person.floor === "5") {
@@ -279,6 +325,9 @@ function addLodgerToDOM(person) {
          }
          fifthFloor.appendChild(liFifth);
 
+         lodgersAllFloored[4] = fifthFloorArray;
+         console.log(lodgersAllFloored);
+
         //  lodgersAllFloored.push(fifthFloorArray);
     }
 
@@ -288,44 +337,99 @@ function addLodgerToDOM(person) {
     console.log(fourthFloorArray);
     console.log(fifthFloorArray);
 
+    // lodgersAllFloored.push(firstFloorArray);
+    // console.log(lodgersAllFloored);
+    // lodgersAllFloored.push(secondFloorArray);
+    // console.log(lodgersAllFloored);
+    // lodgersAllFloored.push(thirdFloorArray);
+    // console.log(lodgersAllFloored);
+    //  lodgersAllFloored.push(fourthFloorArray);
+    //  console.log(lodgersAllFloored);
+    //  lodgersAllFloored.push(fifthFloorArray);
+    //  console.log(lodgersAllFloored);
+
     checkFirstFloor(firstFloorArray);
     checkSecondFloor(secondFloorArray);
     checkThirdFloor(thirdFloorArray);
     checkFourthFloor(fourthFloorArray);
     checkFifthFloor(fifthFloorArray);
 
+    // createAllFloored();
 }
 
 // Check if theres 3 lodger on the floor
 function checkFirstFloor(firstFloorArray) {
     if(firstFloorArray.length > 2) {
         regArray.push("1");
+
+    //     lodgersAllFloored.push(firstFloorArray);
+    // console.log(lodgersAllFloored);
     }
 }
 
 function checkSecondFloor(secondFloorArray) {
     if(secondFloorArray.length > 2) {
         regArray.push("2");
+
+    //     lodgersAllFloored.push(secondFloorArray);
+    // console.log(lodgersAllFloored);
     }
 }
 
 function checkThirdFloor(thirdFloorArray) {
     if(thirdFloorArray.length > 2) {
         regArray.push("3");
+
+    //     lodgersAllFloored.push(thirdFloorArray);
+    // console.log(lodgersAllFloored);
     }
 }
 
 function checkFourthFloor(fourthFloorArray) {
     if(fourthFloorArray.length > 2) {
         regArray.push("4");
+
+    //     lodgersAllFloored.push(fourthFloorArray);
+    //  console.log(lodgersAllFloored);
     }
 }
 
 function checkFifthFloor(fifthFloorArray) {
     if(fifthFloorArray.length > 2) {
         regArray.push("5");
+
+    //     lodgersAllFloored.push(fifthFloorArray);
+    //  console.log(lodgersAllFloored);
     }
 }
+
+// Create an array of floor arrays 
+// function createAllFloored() {
+//     if(firstFloorArray.length > 2 && lodgersAllFloored.length < 1) {
+//         lodgersAllFloored.push(firstFloorArray);
+//         console.log(lodgersAllFloored);
+//         if(secondFloorArray.length > 2  && lodgersAllFloored.length < 2) {
+//             lodgersAllFloored.push(secondFloorArray);
+//             console.log(lodgersAllFloored);
+//             if(thirdFloorArray.length > 2  && lodgersAllFloored.length < 3) {
+//                 lodgersAllFloored.push(thirdFloorArray);
+//                 console.log(lodgersAllFloored);
+//                 if(fourthFloorArray.length > 2  && lodgersAllFloored.length < 4) {
+//                     lodgersAllFloored.push(fourthFloorArray);
+//                     console.log(lodgersAllFloored);
+//                     if (fifthFloorArray.length > 2  && lodgersAllFloored.length < 5) {
+//                         lodgersAllFloored.push(fifthFloorArray);
+//                         console.log(lodgersAllFloored);
+//                     } else return
+
+//                 } else return
+
+//             } else return
+
+//         } else return
+
+//     } else return
+// }
 
 
 // Remove unwanted numbers & occupied floors from input
@@ -337,13 +441,23 @@ function checkFloorInput () {
     } else return
 }
 
-// // Filtering through lodgers
-// function filter() {
-//     if (localStorage.getItem('lodgersAll') === null) {
-//         alert('Фильтровать некого!');   
-//     } else {
-//         lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
-//     } 
+// Filtering through lodgers
+function filter(e) {
+    if (localStorage.getItem('lodgersAll') === null) {
+        alert('Фильтровать некого!');   
+    } else {
+        lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
+    } 
 
+    console.log(lodgersAll);
 
-// }
+    lodgersAll.forEach(function(item){
+        if (item.sex !== document.querySelector('input[name=sexSliderFilter]:checked').value) {
+
+            console.log(item.sex);
+            item.className = 'hidden';
+        } else return
+    });
+
+    e.preventDefault();
+}

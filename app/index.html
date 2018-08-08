@@ -17,7 +17,7 @@
         <div class="visual">
             <div class="visual__image house">
                 <img id="houseImg" src="img/house_day.png" alt="">
-                <div class="house__floors">
+                <div class="house__floors" id="house__whole">
                     <ul id="5thFloor" class="house__floor"></ul>
                     <ul id="4thFloor" class="house__floor"></ul>
                     <ul id="3rdFloor" class="house__floor"></ul>
@@ -42,7 +42,7 @@
                     <div class="form__blocks">
                         <div class="form__name form__block">
                             <p class="form__text">Имя</p>
-                            <input class="form__input" type="text" id="personName" autocomplete="off">
+                            <input class="form__input" type="text" id="personName" autocomplete="off" pattern="[A-Za-zА-Яа-яЁё\s]{0,15}">
                         </div>
                         <div class="form__sex form__block">
                             <p class="form__text">Пол</p>
@@ -113,7 +113,7 @@
             </div>
 
             <div class="main__filter form hidden">
-                <form>
+                <form id="filter">
                     <h3 class="form__heading">Фильтр</h3>
                     <div class="form__blocks">
                         <div class="form__sex form__block">
@@ -172,30 +172,30 @@
         </div>
         <div class="popup form hidden">
             <form>
-                <h3 class="popup__heading">Андрей Смирнов</h3>
+                <h3 class="popup__heading" id="popupHeading">Андрей Смирнов</h3>
                 <div class="popup__blocks">
                     <div class="popup__col1">
                         <div class="popup__sex">
                             <p class="popup__text">Пол</p>
-                            <p class="popup__value">Мужской</p>
+                            <p class="popup__value" id="popupSex">Мужской</p>
                         </div>
                         <div class="popup__rooms">
                             <p class="popup__text">Кол-во комнат</p>
-                            <p class="popup__value">3</p>
+                            <p class="popup__value" id="popupRooms">3</p>
                         </div>
                         <div class="popup__people">
                             <p class="popup__text">Сколько человек проживает</p>
-                            <p class="popup__value">3</p>
+                            <p class="popup__value" id="popupNeibours">3</p>
                         </div>
                     </div>
                     <div class="popup__col2">
                         <div class="popup__floor">
                             <p class="popup__text">Этаж</p>
-                            <p class="popup__value">18</p>
+                            <p class="popup__value" id="popupFloor">18</p>
                         </div>
                         <div class="popup__extra">
                             <p class="popup__text">Дополнительно</p>
-                            <p class="popup__value">Интернет, Домашние животные</p>
+                            <p class="popup__value" id="popupExtra">Интернет, Домашние животные</p>
                         </div>
                     </div>   
                 </div>
