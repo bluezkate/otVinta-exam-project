@@ -69,6 +69,10 @@
         margin-top: 15px;
         margin-bottom: 0;
         align-self: flex-start;
+
+        &:last-child {
+            margin-top: 10px;
+        }
     }
 
     &__input{
