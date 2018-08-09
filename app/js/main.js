@@ -327,14 +327,20 @@ function filter(e) {
             console.log(filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value);
         }
 
-        if(document.querySelectorAll('input[name=extra__filter]:checked')) {
-            checkCheckboxes();
-        } 
-        
+        checkCheckboxes();
 
-        if (item.floor !== filterFloor.value) {
-            itemID.push(i);
-        } 
+        // if(document.querySelectorAll('input[name=extra__filter]:checked')) {
+            
+        // }
+
+        if(filterFloor.value !== '') {
+            if (item.floor !== filterFloor.value) {
+                itemID.push(i);
+            }
+        }  else if (filterFloor.value === '') {
+            console.log(filterFloor.value);
+        }
+         
 
         housePersons.forEach(function(item){
 
@@ -349,18 +355,18 @@ function filter(e) {
         });     
 
         function checkCheckboxes() {
+            
             let arr1 = item.extras,
                 arr2 = getCheckedCheckBoxesFilter();
 
-            var arr3 = arr1.filter(function(n){
-                    return arr2.indexOf(n) >= 0;
-            });
+            let arr3 = arr1.filter(function(n) {
+                return arr2.indexOf(n) >= 0;
+                });
 
-            console.log(arr3);
+            if (arr3.length === 0) {
+                itemID.push(i);
+            }
 
-            if (arr3 === []) {
-            itemID.push(i);
-        }
         }
 
     });
