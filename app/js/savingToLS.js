@@ -46,21 +46,25 @@ function popup(event) {
 
 
     while(target != house) {
-            if(target.tagName == 'LI') {
+        if(target.tagName == 'LI') {
 
-            mainWindow.classList.add('hidden');
-            popupWindow.classList.remove('hidden');
-            popupHeading.innerHTML = lodgersAll[target.id].name;
-            popupSex.innerText = lodgersAll[target.id].sex;
-            popupRooms.innerText = lodgersAll[target.id].rooms;
-            popupRoommates.innerText = lodgersAll[target.id].roommates;
-            popupFloor.innerText = lodgersAll[target.id].floor;
-            popupExtra.innerText = lodgersAll[target.id].extras;
+        // show popup window
+        mainWindow.classList.add('hidden');
+        popupWindow.classList.remove('hidden');
 
+        // get data 
+        popupHeading.innerText = lodgersAll[target.id].name;
+        popupSex.innerText = lodgersAll[target.id].sex;
+        popupRooms.innerText = lodgersAll[target.id].rooms;
+        popupRoommates.innerText = lodgersAll[target.id].roommates;
+        popupFloor.innerText = lodgersAll[target.id].floor;
+        popupExtra.innerText = lodgersAll[target.id].extras;
 
-            return
-            }
-        }   target = target.parentNode;
+        // add pic     
+
+        return
+        }
+    }   target = target.parentNode;
         
     event.preventDefault();
 }
@@ -403,20 +407,48 @@ function checkFloorInput () {
 // Filtering through lodgers
 function filter(e) {
     if (localStorage.getItem('lodgersAll') === null) {
-        alert('Фильтровать некого!');   
+        alert('Фильтровать некого! Добавьте жильцов!');   
     } else {
         lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
     } 
+    const housePersons = document.querySelectorAll('.house__person');
 
-    console.log(lodgersAll);
+    let itemID = [];
 
-    lodgersAll.forEach(function(item){
-        if (item.sex !== document.querySelector('input[name=sexSliderFilter]:checked').value) {
+    lodgersAll.forEach(function(item, i){
+        if(item.sex == document.querySelector('input[name=sexSliderFilter]:checked').value) {
+            itemID.push(i);
 
-            console.log(item.sex);
-            item.className = 'hidden';
-        } else return
+            housePersons.forEach(function(item){
+
+               item.style.visibility = 'visible';
+
+                for( var j = 0; j < itemID.length; j++) {
+                    if(item.id == itemID[j]){
+                        item.style.visibility = 'hidden';
+                    }
+                }
+
+                
+                // } else {
+                    
+                // }
+ 
+            });    
+
+        }
+
+        
+        
     });
+
+    
+
+    
+           
+        
+
+    // });
 
     e.preventDefault();
 }
