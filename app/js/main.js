@@ -93,6 +93,8 @@ function popupExit() {
     
 }
 
+
+// Load data from LS
 function getLodgersFromLS() {
 
     if (localStorage.getItem('lodgersAll') === null) {
@@ -154,7 +156,7 @@ function getLodgersFromLS() {
 
 }
 
-// Adding person info to LS
+// Add person to LS
 function submitLodgerToLS(e) {
 
     // Getting values from checkbox
@@ -204,16 +206,16 @@ function storeLodgerInLS(person) {
 
     counter++;
 
+    addLodgerToDOM(person);
+
+    removeEventSubmit();
+
     function removeEventSubmit () {
         if (counter > 14) {
             formSubmit.removeEventListener('submit', submitLodgerToLS);
             alert('Дом заполнен!');
         } else return
     }
-
-    addLodgerToDOM(person);
-
-    removeEventSubmit();
 
 }
 
@@ -311,20 +313,28 @@ function filter(e) {
 
     lodgersAll.forEach(function(item, i){
 
-        if(item.sex !== document.querySelector('input[name=sexSliderFilter]:checked').value) {
+        if(document.querySelector('input[name=sexSliderFilter]:checked')) {
+            if(item.sex !== document.querySelector('input[name=sexSliderFilter]:checked').value) {
             itemID.push(i);
-        }
+            } 
+        } 
         
-        if (item.rooms !== 0 && item.rooms !== filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value){
-            console.log(item.rooms);
-            itemID.push(i);
+        if(filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value !== "0") {
+            if (item.rooms !== filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value){
+                itemID.push(i);
+            }
+        } else if (filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value === "0") {
+            console.log(filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value);
         }
 
-        checkCheckboxes();
+        if(document.querySelectorAll('input[name=extra__filter]:checked')) {
+            checkCheckboxes();
+        } 
+        
 
         if (item.floor !== filterFloor.value) {
             itemID.push(i);
-        }
+        } 
 
         housePersons.forEach(function(item){
 
