@@ -1,5 +1,6 @@
 "use strict";
 
+// Variables
 const personName = document.getElementById('personName'), 
     personFloor = document.getElementById('personFloor'),
     roomsSelected = document.getElementById("menuRoomsAdd"),
@@ -11,11 +12,14 @@ const personName = document.getElementById('personName'),
     fourthFloor = document.getElementById('4thFloor'),
     fifthFloor = document.getElementById('5thFloor'),
     filterLodgers = document.getElementById('filter'),
-    // filterRooms = ,
+    filterRoomsSelected = document.getElementById('menuRoomsFilter'),
+    filterFloor = document.getElementById('filterFloor'),
     house = document.getElementById('house__whole'),
     mainWindow = document.querySelector('.main'),
     popupWindow = document.querySelector('.popup'),
-    popupHeading = document.getElementById('popupHeading'),
+    popupName = document.getElementById('popupName'),
+    popupImg = document.getElementById('popupImg'),
+    popupCross = document.getElementById('popupCross'),
     popupSex = document.getElementById('popupSex'),
     popupRooms = document.getElementById('popupRooms'),
     popupRoommates = document.getElementById('popupRoommates'),
@@ -38,12 +42,12 @@ formSubmit.addEventListener('submit', submitLodgerToLS);
 personFloor.addEventListener('keyup', checkFloorInput);
 filterLodgers.addEventListener('submit', filter);
 house.addEventListener('click', popup);
+popupCross.addEventListener('click', popupExit);
 
 // Popup window on lodger click
 function popup(event) {
     let target = event.target,
     lodgersAll = JSON.parse(localStorage.getItem('lodgersAll'));  
-
 
     while(target != house) {
         if(target.tagName == 'LI') {
@@ -53,7 +57,7 @@ function popup(event) {
         popupWindow.classList.remove('hidden');
 
         // get data 
-        popupHeading.innerText = lodgersAll[target.id].name;
+        popupName.innerText = lodgersAll[target.id].name;
         popupSex.innerText = lodgersAll[target.id].sex;
         popupRooms.innerText = lodgersAll[target.id].rooms;
         popupRoommates.innerText = lodgersAll[target.id].roommates;
@@ -61,7 +65,11 @@ function popup(event) {
         popupExtra.innerText = lodgersAll[target.id].extras;
 
         // add pic     
-
+        if (popupSex.innerText === "Мужской") {
+            popupImg.style.backgroundImage = "url('../img/boy.svg')";
+        } else if (popupSex.innerText === "Женский"){
+            popupImg.style.backgroundImage = "url('../img/girl.svg')";
+        }
         return
         }
     }   target = target.parentNode;
@@ -69,7 +77,12 @@ function popup(event) {
     event.preventDefault();
 }
 
-
+// Close popup
+function popupExit() {
+    mainWindow.classList.remove('hidden');
+    popupWindow.classList.add('hidden');
+    
+}
 
 function getLodgersFromLS() {
 
@@ -167,12 +180,6 @@ function getLodgersFromLS() {
         }
     });
 
-    console.log(firstFloorArray);
-    console.log(secondFloorArray);
-    console.log(thirdFloorArray);
-    console.log(fourthFloorArray);
-    console.log(fifthFloorArray);
-
     checkFirstFloor(firstFloorArray);
     checkSecondFloor(secondFloorArray);
     checkThirdFloor(thirdFloorArray);
@@ -180,8 +187,6 @@ function getLodgersFromLS() {
     checkFifthFloor(fifthFloorArray);
 
 }
-
-
 
 // Adding person info to LS
 function submitLodgerToLS(e) {
@@ -212,8 +217,6 @@ function submitLodgerToLS(e) {
 
     e.preventDefault();
 }
-
-
 
 // Checking if all the data had been entered
 function checkIfEmpty(person) {
@@ -350,12 +353,6 @@ function addLodgerToDOM(person) {
         lodgersAllFloored[4] = fifthFloorArray;
     }
 
-    console.log(firstFloorArray);
-    console.log(secondFloorArray);
-    console.log(thirdFloorArray);
-    console.log(fourthFloorArray);
-    console.log(fifthFloorArray);
-
     checkFirstFloor(firstFloorArray);
     checkSecondFloor(secondFloorArray);
     checkThirdFloor(thirdFloorArray);
@@ -406,6 +403,7 @@ function checkFloorInput () {
 
 // Filtering through lodgers
 function filter(e) {
+
     if (localStorage.getItem('lodgersAll') === null) {
         alert('Фильтровать некого! Добавьте жильцов!');   
     } else {
@@ -416,12 +414,27 @@ function filter(e) {
     let itemID = [];
 
     lodgersAll.forEach(function(item, i){
-        if(item.sex == document.querySelector('input[name=sexSliderFilter]:checked').value) {
+
+        if(item.sex !== document.querySelector('input[name=sexSliderFilter]:checked').value) {
             itemID.push(i);
+        }
+        
+        if (item.rooms !== filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value){
+            itemID.push(i);
+            console.log(itemID);
+        }
 
-            housePersons.forEach(function(item){
+        checkCheckboxes();
 
-               item.style.visibility = 'visible';
+        if (item.floor !== filterFloor.value) {
+            itemID.push(i);
+        }
+
+
+
+        housePersons.forEach(function(item){
+
+            item.style.visibility = 'visible';
 
                 for( var j = 0; j < itemID.length; j++) {
                     if(item.id == itemID[j]){
@@ -429,26 +442,29 @@ function filter(e) {
                     }
                 }
 
-                
-                // } else {
-                    
-                // }
- 
-            });    
+        });     
 
+        function checkCheckboxes() {
+            let arr1 = item.extras,
+                arr2 = getCheckedCheckBoxesFilter();
+
+            var arr3 = arr1.filter(function(n){
+                    return arr2.indexOf(n) >= 0;
+            });
+
+            if (arr3 === []) {
+            itemID.push(i);
+        }
         }
 
-        
-        
     });
 
+    function getCheckedCheckBoxesFilter() {
+        var selectedCheckBoxes = document.querySelectorAll('input[name=extra__filter]:checked');
+        var checkedValues = Array.from(selectedCheckBoxes).map(cb => cb.value);
+
+        return checkedValues; 
+    }
     
-
-    
-           
-        
-
-    // });
-
     e.preventDefault();
 }

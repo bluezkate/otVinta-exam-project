@@ -10,16 +10,31 @@
         font-size: 25px;
         font-family: Helvetica;
         border-bottom: solid 1px #EAECF0;
+        display: flex;
+        justify-content: space-between;
     }
 
-    &__name {
-        position: relative;
-        &::after {
-            width: 19px;
-            height: 19px;
-            background-image: url('../img/cross.svg');
-            position: absolute;
-        }
+    &__title {
+        display: flex;
+    }
+
+    &__img {
+        width: 23px;
+        height: 31px;
+        background-image: url('../img/boy.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-left: 22px;
+    }
+
+    &__cross {
+        width: 19px;
+        height: 19px;
+        background-image: url('../img/cross.svg');
+        background-repeat: no-repeat;
+        align-self: center;
+        right: 0;
+        cursor: pointer;
     }
 
     &__blocks {

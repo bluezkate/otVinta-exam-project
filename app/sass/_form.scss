@@ -24,14 +24,6 @@
 
     }
 
-    &__name {
-                &::after {
-            width: 19px;
-            height: 19px;
-            background-image: url('../img/cross.svg');
-        }
-    }
-
     &__slider {
         width: 427px;
         height: 49px;

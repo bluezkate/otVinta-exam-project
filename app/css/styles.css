@@ -129,10 +129,10 @@ ul {
   .dayNight-label:after {
     content: '';
     position: absolute;
-    top: 5px;
+    top: 4px;
     left: 86px;
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
     background: #fff;
     -webkit-border-radius: 90px;
             border-radius: 90px;
@@ -231,10 +231,6 @@ ul {
     font-size: 24px;
     padding: 30px 35px 26px 35px;
     border-bottom: solid 1px #EAECF0; }
-  .form__name::after {
-    width: 19px;
-    height: 19px;
-    background-image: url("../img/cross.svg"); }
   .form__slider {
     width: 427px;
     height: 49px;
@@ -437,14 +433,38 @@ ul {
     padding: 30px 35px;
     font-size: 25px;
     font-family: Helvetica;
-    border-bottom: solid 1px #EAECF0; }
-  .popup__name {
-    position: relative; }
-    .popup__name::after {
-      width: 19px;
-      height: 19px;
-      background-image: url("../img/cross.svg");
-      position: absolute; }
+    border-bottom: solid 1px #EAECF0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  .popup__title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .popup__img {
+    width: 23px;
+    height: 31px;
+    background-image: url("../img/boy.svg");
+    -webkit-background-size: contain;
+            background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 22px; }
+  .popup__cross {
+    width: 19px;
+    height: 19px;
+    background-image: url("../img/cross.svg");
+    background-repeat: no-repeat;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    right: 0;
+    cursor: pointer; }
   .popup__blocks {
     display: -webkit-box;
     display: -webkit-flex;
