@@ -294,7 +294,9 @@ function checkFloor (floorArray, i) {
 function checkFloorInput () {
     var regExp = new RegExp("[" + regArray + "]");
     if(regExp.test(this.value)) {
-        alert('Введите правильный номер этажа');
+        // alert('Введите правильный номер этажа');
+        personFloor.setAttribute('pattern', `${regExp}`);
+        console.log(regExp);
     } else return
 }
 
@@ -329,10 +331,6 @@ function filter(e) {
 
         checkCheckboxes();
 
-        // if(document.querySelectorAll('input[name=extra__filter]:checked')) {
-            
-        // }
-
         if(filterFloor.value !== '') {
             if (item.floor !== filterFloor.value) {
                 itemID.push(i);
@@ -341,11 +339,9 @@ function filter(e) {
             console.log(filterFloor.value);
         }
          
-
         housePersons.forEach(function(item){
 
             item.style.visibility = 'visible';
-
                 for( var j = 0; j < itemID.length; j++) {
                     if(item.id == itemID[j]){
                         item.style.visibility = 'hidden';
