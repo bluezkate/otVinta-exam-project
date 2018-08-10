@@ -325,7 +325,8 @@ ul {
     .form__menu-arrow {
       position: absolute;
       border: 12px solid transparent;
-      right: 26px; }
+      right: 26px;
+      outline: none; }
       .form__menu-arrow:nth-child(1) {
         top: 21px;
         border-top-color: #000; }

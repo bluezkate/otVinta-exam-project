@@ -183,6 +183,8 @@ function submitLodgerToLS(e) {
     // Storing person info in LS
     storeLodgerInLS(person);
 
+    formSubmit.reset();
+
     e.preventDefault();
 }
 
@@ -204,6 +206,7 @@ function storeLodgerInLS(person) {
     localStorage.setItem('lodgersAll', JSON.stringify(lodgersAll));
 
     addLodgerToDOM(person);
+
 
     removeEventSubmit();
 
