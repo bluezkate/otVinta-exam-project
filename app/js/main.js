@@ -198,23 +198,22 @@ function checkIfEmpty(person) {
 }
 
 // Store person object in LS
-var counter = 0;
 function storeLodgerInLS(person) {
 
     lodgersAll.push(person);
     localStorage.setItem('lodgersAll', JSON.stringify(lodgersAll));
-
-    counter++;
 
     addLodgerToDOM(person);
 
     removeEventSubmit();
 
     function removeEventSubmit () {
-        if (counter > 14) {
-            formSubmit.removeEventListener('submit', submitLodgerToLS);
+
+        if (lodgersAll.length > 14) {
             alert('Дом заполнен!');
+            formSubmit.removeEventListener('submit', submitLodgerToLS);
         } else return
+
     }
 
 }
@@ -258,6 +257,7 @@ function addLodgerToDOM(person) {
 
     function lodgerFloored(person, floorArrayLs, floorArrayDom) {
 
+        // push person object to a floor array
         floorArrayLs.push(person);
         //  creat li element
         const li = document.createElement('li');
@@ -266,12 +266,14 @@ function addLodgerToDOM(person) {
         // add id
         li.id = lodgersAll.length - 1;
 
+        // add dom pic
         if (person.sex === "Мужской") {
             li.style.backgroundImage = "url('../img/boy.svg')";
         } else if (person.sex === "Женский"){
             li.style.backgroundImage = "url('../img/girl.svg')";
         }
 
+        // add person item to dom 'array'
         floorArrayDom.appendChild(li);
     
     }
@@ -294,9 +296,7 @@ function checkFloor (floorArray, i) {
 function checkFloorInput () {
     var regExp = new RegExp("[" + regArray + "]");
     if(regExp.test(this.value)) {
-        // alert('Введите правильный номер этажа');
         personFloor.setAttribute('pattern', `${regExp}`);
-        console.log(regExp);
     } else return
 }
 
@@ -329,7 +329,11 @@ function filter(e) {
             console.log(filterRoomsSelected.options[filterRoomsSelected.selectedIndex].value);
         }
 
-        checkCheckboxes();
+        if(document.querySelectorAll('input[name=extra__filter]:checked').length !== 0) {
+            checkCheckboxes();            
+        }
+
+        
 
         if(filterFloor.value !== '') {
             if (item.floor !== filterFloor.value) {
@@ -361,7 +365,7 @@ function filter(e) {
 
             if (arr3.length === 0) {
                 itemID.push(i);
-            }
+            } else return
 
         }
 
