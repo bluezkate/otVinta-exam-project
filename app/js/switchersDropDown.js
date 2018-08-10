@@ -34,9 +34,9 @@ function switchWindowsAdd () {
 
         addWindow.classList.remove("hidden");
         filterWindow.classList.add("hidden");
+
     } else return
 }
-
 
 function switchWindowsFilter () {
 
